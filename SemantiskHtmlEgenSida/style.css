@@ -1,0 +1,33 @@
+body {
+    padding: 0;
+    margin: 10px;
+    box-sizing: border-box;
+}
+
+
+
+ul {
+    display: flex;
+    list-style: none;
+    background-color: rgb(148, 151, 151);
+    border: solid 1px;
+    padding: 10px;
+    min-width: 500px;
+    border-radius: 10px;
+    
+}
+
+li {
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-around;
+    background-color: rgb(193, 191, 191);
+    padding: 10px;
+   
+    
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
