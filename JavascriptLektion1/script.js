@@ -202,7 +202,7 @@ switch (weekday) {
     /* "map"-funktionen används i en array eller lista för att ändra något på alla 
     värden. tex kan man ta hela listan *2 så dubblas alla värden */
 
-    /**********************************************/
+    /****************************************************************************/
 
 
    /*  let mening = "Jag heter Johan";
@@ -295,7 +295,7 @@ console.log(`Är sträng 1 tom? ` + isEmpty2)
 
     
 /**********************Övning3 (annat alternativ)************************/
-
+/* 
 function checkIfNumberIsPosetive(number) {
     if( number > 0 ) {
         console.log(`Talet ${number} är positivt`) 
@@ -307,15 +307,18 @@ function checkIfNumberIsPosetive(number) {
 }
 
 checkIfNumberIsPosetive(500)
-checkIfNumberIsPosetive(500)
+checkIfNumberIsPosetive(-2)
 checkIfNumberIsPosetive(0)
 
 
-
+ */
 
 /***********************************************************************/
 
-/* function factorial(n) {
+/*4: Skriv en funktion som kontrollerar summan av ett factorialt tal :
+En factorial är en matematisk operation där du multiplicerar det givna talet med alla positiva heltal mindre än det.*/
+
+ /* function factorial(n) {
     if (n === 0 || n === 1) {
       return 1;
     } else {
@@ -332,8 +335,63 @@ checkIfNumberIsPosetive(0)
     return sum;
   }
 
-  var n = 0; // Du kan ändra n till det nummer du vill beräkna summan för.
+  var n = 170; // Du kan ändra n till det nummer du vill beräkna summan för.
 var resultat = sumOfFactorials(n);
-console.log("Summan av faktoriseringsvärden från 1 till " + n + " är: " + resultat); */
+console.log("Summan av faktoriseringsvärden från 1 till " + n + " är: " + resultat); 
+ */
 
+
+/***********************************************************************/
+
+/* Här är ett JavaScript-program som tar emot tre numeriska värden 
+från användaren och utvärderar vilket av dem som är störst: */
+
+
+// Funktion för att ta emot numeriska värden från användaren
+/* function mataInTal() {
+    const tal1 = parseFloat(prompt("Ange det första talet:"));
+    const tal2 = parseFloat(prompt("Ange det andra talet:"));
+    const tal3 = parseFloat(prompt("Ange det tredje talet:"));
+    return [tal1, tal2, tal3];
+}
+
+// Huvudprogrammet
+function main() {
+    const [tal1, tal2, tal3] = mataInTal();
+
+    if (!isNaN(tal1) && !isNaN(tal2) && !isNaN(tal3)) 
     
+    { 
+         if (tal1 > tal2 && tal1 > tal3) {
+            console.log("Det första talet är störst: " + tal1);
+        } else if (tal2 > tal1 && tal2 > tal3) {
+            console.log("Det andra talet är störst: " + tal2);
+
+        } else if (tal3 > tal2 && tal3 > tal1) {
+            console.log("Det tredje talet är störst: " + tal3);
+
+        } else if (tal1 === tal2 && tal1 > tal3) {
+            console.log("De två första talen är störst")
+        } else if (tal1 === tal3 && tal1 > tal2) {
+            console.log("Det första och tredje talet är störst")
+        } else if (tal2 === tal3 && tal2 > tal1) {
+            console.log("Det andra och tredje talet är störst")
+        } else {
+            console.log("Alla talen är lika stora")
+        }
+    } else {
+        console.log("Felaktig inmatning. Var säker på att du anger numeriska värden.");
+    }
+}
+
+main();
+ */
+/***********************************************************************/
+
+/* 11 Du kommer att få ett ord. Din uppgift är att returnera det mellersta tecknet i ordet.
+Om ordets längd är udda, returnera det mellersta tecknet. 
+Om ordets längd är jämnt, returnera de två mellersta tecknen. */
+
+function getMiddleCharacter(word) {
+    
+}
