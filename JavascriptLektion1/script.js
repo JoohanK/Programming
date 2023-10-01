@@ -224,11 +224,18 @@ switch (weekday) {
 
     console.log  (onlyYear(date)); */
 
+
+
+
+
+
+
+
+
+
     /*****************************************/
 
-
-
-  /* 1
+  /* 1 skriv en funktion som returnerar en rektangels area:
 
      function exempel (x, y) {
         console.log("x är:", x)
@@ -239,11 +246,19 @@ switch (weekday) {
     const z = exempel (100, 200)
     console.log (z + " kvadratmeter");
 
-    **********************************************
- */
 
-   
-/* 2
+
+
+
+
+
+
+
+    /**********************************************/
+ 
+/* 2 2: skriv en funktion som kontrollerar om en sträng är tom:
+
+a)
     var minStrang = "";
 
     function arTomStrang(strang) {
@@ -256,7 +271,9 @@ switch (weekday) {
       console.log("Strängen är inte tom.");
     }
 
-**********************************************
+/**********************************************/
+
+/* b)
 
     function stringIsEmpty(string) {
     if( string.length === 0 ){
@@ -273,8 +290,19 @@ const isEmpty2 = stringIsEmpty('hej')
 console.log(`Är sträng 1 tom? ` + isEmpty2) 
 
 
+ */
+
+
+
+
+
+
+
+
 
 /**********************Öving3************************/
+
+// 3: a) skriv en funktion som kontrollerar om ett nummer är positivt eller negativt:
 
     /*  function kontrolleraPositivtNegativt(nummer) {
         if (nummer > 0) {
@@ -296,6 +324,8 @@ console.log(`Är sträng 1 tom? ` + isEmpty2)
     
 /**********************Övning3 (annat alternativ)************************/
 /* 
+b)
+
 function checkIfNumberIsPosetive(number) {
     if( number > 0 ) {
         console.log(`Talet ${number} är positivt`) 
@@ -312,6 +342,13 @@ checkIfNumberIsPosetive(0)
 
 
  */
+
+
+
+
+
+
+
 
 /***********************************************************************/
 
@@ -341,9 +378,18 @@ console.log("Summan av faktoriseringsvärden från 1 till " + n + " är: " + res
  */
 
 
+
+
+
+
+
+
+
+
+
 /***********************************************************************/
 
-/* Här är ett JavaScript-program som tar emot tre numeriska värden 
+/* 5. Här är ett JavaScript-program som tar emot tre numeriska värden 
 från användaren och utvärderar vilket av dem som är störst: */
 
 
@@ -386,12 +432,392 @@ function main() {
 
 main();
  */
+
+
+
+
+
+
+
+
+
+
 /***********************************************************************/
+
+// 6. kolla om en sträng
+// Inkludera ett visst ord. Gör ett program som tar en mening som argument 
+// och kollar om den innehåller "javaScript"
+
+/* function innehållerJavaScript(mening) {
+    // Konvertera hela meningen till gemener (lowercase) för att göra jämförelsen fall-insensitiv.
+    const gemener = mening.toLowerCase();
+  
+    // Använd indexOf() för att kontrollera om "javascript" finns i meningen.
+    if (gemener.indexOf("javascript") !== -1) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  
+  // Testa funktionen med en exempelmening.
+  const mening = "Jag älskar att lära mig javascript.";
+  if (innehållerJavaScript(mening)) {
+    console.log("Meningen innehåller ordet 'JavaScript'.");
+  } else {
+    console.log("Meningen innehåller inte ordet 'JavaScript'.");
+  }
+
+
+
+
+
+
+
+
+
+  /***********************************************************************/
+
+  //7: Temperatur
+  //Gör ett program som konverterar Celsius till Fahrenheit
+
+/*   function celsiusTillFahrenheit(celsius) {
+    // Använd formeln för att utföra konverteringen.
+    const fahrenheit = (celsius * 9/5) + 32;
+    return fahrenheit;
+  }
+  
+  // Testa funktionen med en temperatur i Celsius.
+  const celsiusTemperatur = 1; // Ändra detta till önskad temperatur i Celsius.
+  const fahrenheitTemperatur = celsiusTillFahrenheit(celsiusTemperatur);
+  
+  console.log(`${celsiusTemperatur}°C motsvarar ${fahrenheitTemperatur}°F.`); */
+
+
+
+
+
+
+
+
+
+
+  /***********************************************************************/
+  
+  // 8. skriv en funktion som gör en grundläggande miniräknare av de 4 räknesätten:
+
+  /* function miniRaknare(operation, tal1, tal2) {
+    switch (operation) {
+        case 'plus':
+            return tal1+ tal2;
+            case 'ganger':
+                return tal1 * tal2;
+                case 'minus':
+                    return tal1- tal2;
+                    case 'delat':
+                        if (tal2 === 0) {
+                            return 'kan inte dela med noll';
+                        }
+                        return tal1/ tal2;
+                        default:
+                            return 'ogiltig operation';
+    }
+}
+
+  const plusResultat = miniRaknare('plus' , 100, 200);
+  console.log('plus' , plusResultat);
+
+  const gangerResultat = miniRaknare('ganger' , 200, -300);
+  console.log('Gånger' , gangerResultat);
+
+  const minusResultat = miniRaknare('minus' , 100, 300);
+  console.log('minus' , minusResultat);
+
+  const delatResultat = miniRaknare('delat' , 600, 3);
+  console.log('delat' , delatResultat); */
+  
+
+
+
+
+
+
+
+  /***********************************************************************/
+
+// 9.skriv en funktion som kontrollerar om ordet är en pallidrom
+
+/* function arPalindrom(ord) {
+    //Ta bort mellandslag och konvertera till gemener (lovercase).
+    ord = ord.toLowerCase().replace(/ /g, '');
+
+    //Skapa en omvänd version av ordet.
+    const omvantOrd = ord.split('').reverse().join('');
+
+    return ord === omvantOrd;
+}
+//testa funktionen med olika ord
+const ord1 = "Ola Salo";
+const ord2 = "naturrutan";
+const ord3 = "häst";
+
+console.log(`Är "${ord1}" ett palindrom? ${arPalindrom(ord1)}`);
+console.log(`Är "${ord2}" ett palindrom? ${arPalindrom(ord2)}`);
+console.log(`Är "${ord3}" ett palindrom? ${arPalindrom(ord3)}`); */
+
+
+
+
+
+
+
+
+
+  /***********************************************************************/
+
+// 10. "Timmy och Sarah tror att de är förälskade, men runt där de bor kommer de bara att veta när de väljer varsin blomma.
+// Om en av blommorna har ett jämnt antal blad och den andra har ett udda antal blad betyder det att de är förälskade.
+
+// Skriv en funktion som tar antalet blad på varje blomma som inmatning
+// och returnerar true om de är förälskade och false om de inte är det.
+
+/* function inLove(blomma1, blomma2) {
+    //Kontrollera om båda blommorna har jämt antal blad
+    // eller att båda har udda antal blad
+    if ((blomma1 % 2 === 0 && blomma2 % 2 !== 0) || (blomma1 % 2 === 0 && blomma2 % 2 !== 0)) {
+        return true; // De är förälskade om båda villkoren är sanna
+    } else {
+        return false; // De är inte förälskade annars
+    }
+}
+
+//Testa funktionen med de angivna värdena.
+let blomma1 = 2;
+let blomma2 = 2;
+const resultat = inLove(blomma1, blomma2);
+
+if (resultat) {
+    console.log("Timmy och Sarah är förälskade!");
+} else {
+    console.log("Timmy och Sarah är inte förälskade.");
+}
+
+ */
+
+
+
+
+
+
+
+  /***********************************************************************/
 
 /* 11 Du kommer att få ett ord. Din uppgift är att returnera det mellersta tecknet i ordet.
 Om ordets längd är udda, returnera det mellersta tecknet. 
 Om ordets längd är jämnt, returnera de två mellersta tecknen. */
 
-function getMiddleCharacter(word) {
-    
+/* function getMiddleCharacter(word) {
+	// Ta reda på strängens längd
+	// är ordets längd udda eller jämnt?
+	// Räkna ut "mitten"
+	// plocka ut 1 eller 2 tecken (beroende på udda/jämnt)
+	// returnera tecknet/tecknen
+
+	const length = word.length
+	if( length % 2 === 0 ) {
+		// Jämnt antal tecken
+		// Exempel på en jämn sträng: 'anka'. Använd exempel för att göra sådan här kod lite mera konkret!
+		let x = length / 2 - 1
+		let chars = word[x] + word[x + 1]
+		return chars
+
+	} else {
+		// Udda antal tecken
+		// Exempel på udda sträng: 'badboll'
+		let x = Math.floor(length / 2)
+		let char = word[x]
+		return char
+	}
 }
+
+console.log('Mitten på anka är: ' + getMiddleCharacter('anka'))  // längd 4
+console.log('Mitten på kaleanka är: ' + getMiddleCharacter('kaleanka'))  // längd 8
+console.log('Mitten på badboll är: ' + getMiddleCharacter('badboll')) // längd 7 */
+
+
+
+
+
+
+
+
+
+
+/***********************************************************************/
+
+/* 12: Skriv en funktion som retunerar längden av det kortaste ordet i en mening 
+**kan innehålla en loop för att lösas exempelvis en for loop */
+
+/* function langdAvKortasteOrd(mening) {
+    // Dela upp meningen i ord genom att använda mellanslag som separator.
+    const ord = mening.split (" ");
+
+    // Om meningen är tom returnerar jag 0.
+    if (ord.length === 0) {
+        return 0;
+   }
+   // Initialt sätter jag längden av det kortaste ordet till längden av det första ordet.
+   let kortasteLangd = ord[0].length;
+
+   // Använd en for-loop för att gå igenom alla ord i meningen
+   for (let i = 1; i < ord.length; i++) {
+    const ordlangd = ord[i].length;
+
+    // Om det aktuella ordet är kortare än de kortaste vi har hittat hittils, uppdatera kortasteLangd.
+    if (ordlangd < kortasteLangd) {
+        kortasteLangd = ordlangd;
+    }
+}
+
+// Returnera längden av det korstaste ordet.
+return kortasteLangd;
+}
+
+const mening = "helikoptern flyger högt utanför fönstret.";
+const kortasteOrdLangd = langdAvKortasteOrd(mening);
+console.log(`Längden av det kortaste order är: ${kortasteOrdLangd}`); */
+
+
+
+
+
+
+/***********************************************************************/
+
+/* 13. Definiera en JavaScript-funktion som kontrollerar om ett heltal är ett primtal eller inte. 
+Ett primtal är ett tal som bara är delbart med sig sjäv och 1. 
+Även denna uppgift kan innehålla en for-loop och en Math.sqrt metod.
+
+// Exempelanvändning:
+const tal1 = 17; // Primtal
+const tal2 = 10; // Inte ett primtal */
+
+/* function arPrimtal(tal) {
+    // Om talet är mindre än 2, är det inte ett primtal
+    if (tal < 2 ) {
+        return false;
+    }
+
+    // Om talet är 2 eller 3 är det ett primtal.
+    if (tal === 2 || tal === 3 ) {
+        return true;
+    }
+
+    // Om talet är jämnt delbart med 2 eller mindre än 0, är det inte ett primtal
+    if (tal % 2 === 0 || tal < 0) {
+        return false;
+    }
+
+    // Använd en for-loop för att kontrollera om talet är delbart med något tal från 2 till sqrt(tal).
+    for (let i = 3; i <= Math.sqrt(tal); i += 2) {
+        if (tal % i === 0) {
+            return false; // Talet är delbart med i, så det är inte ett primtal.
+        }
+    }
+    return true; // Om Loopen avslutas utan att hitta något delbart tal, är talet ett primtal
+}
+
+// Testa funktionen med olika tal.
+const tal1 = 97;
+const tal2 = 10;
+
+console.log(`Är ${tal1} ett primtal? ${arPrimtal(tal1)}`);
+console.log(`Är ${tal2} ett primtal? ${arPrimtal(tal2)}`); */
+
+
+
+
+
+
+/***********************************************************************/
+
+/* 14. Skriv en funktion som tar tre parametrar: name, city och favoriteColor. 
+Den ska skriva ut informationen till konsolen i en fullständig mening. 
+Exempel "Välkommen Namn från Göteborg med favvofärg blått". 
+Skriv kod som anropar funktionen med lämpliga värden.
+ */ 
+
+/* // Funktion som skriver ut välkomstmeddelandet
+function skrivaValkommenMeddelande(name1, city, favoriteColor) {
+    console.log(`Välkommen ${name1} från ${city} med favoritfärg ${favoriteColor}`);
+}
+
+// Fråga användaren efter namn, stad och favoritfärg
+const name1 = prompt("Skriv ditt namn:");
+const city = prompt("Skriv din stad:");
+const favoriteColor = prompt("Skriv din favoritfärg:");
+
+// Anropa funktionen med de angivna värdena
+skrivaValkommenMeddelande(name1, city, favoriteColor); */
+
+
+
+
+
+
+/***********************************************************************/
+
+// 15. Skriv en funktion som avrundar ett tal till två decimaler, med hjälp av metoden Math.round. 
+
+
+/* function avrundaTillTvaDecimaler(tal) {
+    const avrundatTal = Math.round(tal * 100) / 100;
+
+    if (tal < 0) {
+        return Math.floor(tal + 0.5);
+    }
+    return avrundatTal;
+  }
+  
+  console.log(avrundaTillTvaDecimaler(5.5648457)); // Förväntad utmatning: -5
+  console.log(avrundaTillTvaDecimaler(-5.50000));  // Förväntad utmatning: -5
+  console.log(avrundaTillTvaDecimaler(-5.95)); // Förväntad utmatning: -6 */
+
+  /***********************************************************************/
+/* 
+  
+16. Skriv en funktion som säger hur många dagar en månad har. 
+(Låtsas att skottår inte finns.) Funktionen ska ha en parameter, som är en sträng för varje månad. 
+Strängen ska vara de tre första tecknen i månadens namn, dvs jan, feb, mar, apr osv. 
+Funktionen ska returnera ett tal. Exempelvis så är daysInMonth("mar") == 31
+
+function daysInMonth(månad) {
+
+    switch (månad) {
+        case "jan":
+        case "mar":
+        case "maj":
+        case "jul":
+        case "aug":
+        case "okt":
+        case "dec":
+            return 31;
+        case "apr":
+        case "jun":
+        case "sep":
+        case "nov":
+            return 30;
+        case "feb":
+            // Vi låtsas att skottår inte finns
+            return 28; 
+        default:
+            // Om en ogiltig månad anges
+            return "Ogiltig månad"; 
+
+    }
+  }
+
+   //Testa funktionen med olika månader
+    console.log (daysInMonth("feb"));
+
+ */
