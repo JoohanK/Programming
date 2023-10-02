@@ -233,7 +233,7 @@ switch (weekday) {
 
 
 
-    /*****************************************/
+    /***************** UTRÄKNING AV REKTANGEL ************************/
 
   /* 1 skriv en funktion som returnerar en rektangels area:
 
@@ -254,7 +254,7 @@ switch (weekday) {
 
 
 
-    /**********************************************/
+    /********************* TOM STRÄNG *************************/
  
 /* 2 2: skriv en funktion som kontrollerar om en sträng är tom:
 
@@ -300,7 +300,7 @@ console.log(`Är sträng 1 tom? ` + isEmpty2)
 
 
 
-/**********************Öving3************************/
+/********************** POSITIVT ELLER NEGATIVT TAL ************************/
 
 // 3: a) skriv en funktion som kontrollerar om ett nummer är positivt eller negativt:
 
@@ -322,7 +322,7 @@ console.log(`Är sträng 1 tom? ` + isEmpty2)
     "Positivt" eftersom testNummer är större än 0.
 
     
-/**********************Övning3 (annat alternativ)************************/
+/********************** Övning3 (annat alternativ) ************************/
 /* 
 b)
 
@@ -350,7 +350,7 @@ checkIfNumberIsPosetive(0)
 
 
 
-/***********************************************************************/
+/******************************** FACTORIALT TAL ***************************************/
 
 /*4: Skriv en funktion som kontrollerar summan av ett factorialt tal :
 En factorial är en matematisk operation där du multiplicerar det givna talet med alla positiva heltal mindre än det.*/
@@ -387,7 +387,7 @@ console.log("Summan av faktoriseringsvärden från 1 till " + n + " är: " + res
 
 
 
-/***********************************************************************/
+/****************************** VILKET TAL ÄR STÖRST *****************************************/
 
 /* 5. Här är ett JavaScript-program som tar emot tre numeriska värden 
 från användaren och utvärderar vilket av dem som är störst: */
@@ -442,7 +442,7 @@ main();
 
 
 
-/***********************************************************************/
+/************************* KOLLA OM ETT ORD FINNS I MENING **********************************/
 
 // 6. kolla om en sträng
 // Inkludera ett visst ord. Gör ett program som tar en mening som argument 
@@ -502,7 +502,7 @@ main();
 
 
 
-  /***********************************************************************/
+  /******************** MINIRÄKNARE ***************************************************/
   
   // 8. skriv en funktion som gör en grundläggande miniräknare av de 4 räknesätten:
 
@@ -543,7 +543,7 @@ main();
 
 
 
-  /***********************************************************************/
+  /*********************************** PALLINDROM ************************************/
 
 // 9.skriv en funktion som kontrollerar om ordet är en pallidrom
 
@@ -610,7 +610,7 @@ if (resultat) {
 
 
 
-  /***********************************************************************/
+  /********************************* MELLERSTA TECKEN I ORD **************************************/
 
 /* 11 Du kommer att få ett ord. Din uppgift är att returnera det mellersta tecknet i ordet.
 Om ordets längd är udda, returnera det mellersta tecknet. 
@@ -653,7 +653,7 @@ console.log('Mitten på badboll är: ' + getMiddleCharacter('badboll')) // läng
 
 
 
-/***********************************************************************/
+/**************** LÄNGDEN AV DET KORTASTE ORDET I EN MENING *******************************************************/
 
 /* 12: Skriv en funktion som retunerar längden av det kortaste ordet i en mening 
 **kan innehålla en loop för att lösas exempelvis en for loop */
@@ -692,7 +692,7 @@ console.log(`Längden av det kortaste order är: ${kortasteOrdLangd}`); */
 
 
 
-/***********************************************************************/
+/******************** PRIMTAL ELLER INTE ***************************************************/
 
 /* 13. Definiera en JavaScript-funktion som kontrollerar om ett heltal är ett primtal eller inte. 
 Ett primtal är ett tal som bara är delbart med sig sjäv och 1. 
@@ -739,7 +739,7 @@ console.log(`Är ${tal2} ett primtal? ${arPrimtal(tal2)}`); */
 
 
 
-/***********************************************************************/
+/****************** TRE PARAMETRAR IN OCH SEN UT**********************************/
 
 /* 14. Skriv en funktion som tar tre parametrar: name, city och favoriteColor. 
 Den ska skriva ut informationen till konsolen i en fullständig mening. 
@@ -765,7 +765,7 @@ skrivaValkommenMeddelande(name1, city, favoriteColor); */
 
 
 
-/***********************************************************************/
+/********************* AVRUNDA TILL TVÅ DECIMALER **************************************************/
 
 // 15. Skriv en funktion som avrundar ett tal till två decimaler, med hjälp av metoden Math.round. 
 
@@ -783,7 +783,11 @@ skrivaValkommenMeddelande(name1, city, favoriteColor); */
   console.log(avrundaTillTvaDecimaler(-5.50000));  // Förväntad utmatning: -5
   console.log(avrundaTillTvaDecimaler(-5.95)); // Förväntad utmatning: -6 */
 
-  /***********************************************************************/
+
+
+
+
+  /********************** SWITCH & CASE *************************************************/
 /* 
   
 16. Skriv en funktion som säger hur många dagar en månad har. 
@@ -821,3 +825,228 @@ function daysInMonth(månad) {
     console.log (daysInMonth("feb"));
 
  */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      /********************************* LOOPAR **************************************/
+    
+        /**************** FOR LOOPS ****************/
+
+      // for loops
+
+    /*   for(let i = 0; i < 5; i++) {
+         console.log('in loop: ', i)
+      } */
+
+      /* const names = ['shaun', 'mario', 'luigi'];
+
+      for(let i = 0; i < names.length; i++){
+       // console.log(names[i]);
+       let html = `<div>${names[i]}</div>`;
+       console.log(html);
+      } */
+
+      /**************** WHILE LOOPS ****************/
+
+      // While loops 1
+      /* const names = ['shaun', 'mario', 'luigi'];
+      /* let i = 0;
+      
+      while(i < 5){
+        console.log('in loop: ', i);
+        i++;
+      } */ 
+
+
+     /*  // While loops 2
+      const names = ['shaun', 'mario', 'luigi'];
+        let i = 0;
+        while (i < names.legth) {
+            console.log(names[i]);
+            i++;
+        } */
+
+        /**************** DO WHILE LOOPS ****************/
+
+        // Do while loops
+        // Om du vill köra en gång inann while uppnås, lägg då en "do" och sen while utanför.
+       /*  let i = 5;
+        do {
+        console.log('val of i is: ', i);
+            i++;
+        }
+        while(i < 5);
+        */
+
+         /**************** IF STATEMENT ****************/
+
+        // if statements
+
+        /* const age = 20;
+
+        if (age > 20){
+            console.log('you are over 20 years olf')
+        }
+
+        const ninjas = ['shaun', 'ryu', 'chun-li', 'yoshi'];
+
+        if (ninjas.length > 3){
+            console.log("that's a lot of ninjas")
+        } */
+
+        /* const password = 'p@ss';
+
+        if(password.legth >= 8) {
+            console.log('that password is long enough');
+        } */
+
+         /**************** ELSE IF STATEMENT ****************/
+
+        
+       /*  const password = 'p@ss';
+
+        if(password.length >= 12){
+            console.log('that password is mighty strong');
+        } else if(password.length >= 8) {
+            console.log('that password is strong enough');
+        } else {
+            console.log('password is not strong enough');
+        }   
+        */
+
+
+        /**************** LOGICAL OPERATORS - OR || and AND && ****************/
+
+       /*  const password = 'p@ss'
+
+        //Båda kraven måste fyllas när jag använder &&
+        if(password.length >= 12 && password.includes('@')){ 
+            console.log('that password is mighty strong');
+        //Här räcker det att något av kraven uppfylls när jag använder ||
+        //OM jag lägger till ett kvar + && efter en || så kombineras dom som ett krav likt ovanstående
+        } else if(password.length >= 8 || password.includes('@') && password.length > 5) {
+            console.log('that password is strong enough');
+        } else {
+            console.log('password is not strong enough');
+        }   
+        */
+
+
+
+         /**************** LOGICAL NOT (!) ******************************/
+
+     /*    let user = false; //Bestämmer att user alltid är false
+
+        if(!user){ //swoppar if-true satsen till false med hjälp av (!)
+
+            // detta skrivs ut för att user är false och if-satsen nu är false istället
+            console.log('you must be logged in top continue') 
+
+         }
+
+         console.log(!true);
+         console.log(!false);
+          */
+
+
+
+          /**************** BREAK AND CONTINUE ******************************/
+
+         /*  const scores = [50, 25, 0, 30, 100, 20, 10];
+
+          for(let i = 0; i < scores.length; i++) {
+            
+            //Hoppar över score 0 och sen fortsätter loopen
+            if(scores[i] === 0){ 
+                continue;
+            }
+
+            console.log('your score: ', scores[i]);
+
+            //När användaren når score 100 så aktiveras 'break' som avrbyter loopen
+            if(scores[i] === 100) {
+                console.log('congrats, you got the top score!');
+                break;
+            }
+
+          } */
+
+
+
+            /**************** SWITCH STATEMENTS ******************************/
+
+          /*   const grade = 'D';
+
+            switch(grade) {
+                case 'A' :
+                    console.log('you got an A!');
+                    break;
+                case 'B' :
+                    console.log('you got an B!');
+                    break;
+                case 'C' :
+                    console.log('you got an C!');
+                    break;
+                case 'D' :
+                    console.log('you got an D!');
+                    break;
+                case 'E' :
+                    console.log('you got an E!');
+                    break;
+                default: 
+                console.log('not a valid grade');
+
+            } */
+
+        
+            // ********* ANVÄND SWITCH (Pil uppåt) ISTÄLLET FÖR USING IF STATEMENTS SOM EXEMPLET NEDANFÖR
+            
+            /* const grade = 'D';
+
+            if(grade === 'A'){
+
+            } else if(grade === 'B') {
+                
+            } else if(grade === 'C') {
+
+            } else if(grade === 'D') {
+
+
+            } else if(grade === 'E') {
+
+            } else {
+            } */
+
+
+            /**************** VARIABLES & BLOCK SCOPE ******************************/
+
+          /*   const age = 30; //THIS VARIABLE HAVE GLOBAL SCOPE BEACUSE ITS 'OUTSIDE'
+            //YOU CAN ACESS IT FROM EITHER WITHIN A {} AND OUTSIDE
+
+            if(true) {
+                const age = 40;
+                const name1 = 'shaun'
+                console.log('inside 1st code block: ', age, name1);
+
+                if(true) {
+                    const age = 50;
+                    //Om vi inte gör en const age 50 här så kommer denna age bli senast angivna, 
+                    // allstå age 40 och inte den firsta globala age 30.
+                    console.log('inside 2nd code block: ', age) // Denna hittar bara sin egen age 50.
+
+                }
+            }
+
+            console.log('outside code block: ', age); // Denna når bara vår första const age. */
