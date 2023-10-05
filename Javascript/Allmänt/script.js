@@ -1050,3 +1050,5 @@ function daysInMonth(månad) {
             }
 
             console.log('outside code block: ', age); // Denna når bara vår första const age. */
+
+           
