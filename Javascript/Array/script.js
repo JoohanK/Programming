@@ -84,7 +84,6 @@ console.log(lista.sort((a, b) => a - b)); */
         // 11. Lägg till en frukt i början av arrayen
         let nyttElement = ('Melon')
         fruits.unshift(nyttElement);
-
         console.log (fruits);
          
         // 12. I arrayen ovan, ta bort sista frukten i arrayen.
@@ -96,13 +95,13 @@ console.log(lista.sort((a, b) => a - b)); */
         console.log(fruits);
 
         // 14. Sätt in en frukt i arrayen ovan på index 1.
-        let nyFrukt = 'banana';
-        fruits.splice(1, 0, nyFrukt);
+       
+        fruits.splice(1, 0, 'Testa');
         console.log (fruits);
 
         // 15. Sätt tre frukter i arrayen ovan på index 2
-        let nyaFrukter = 'Apelsin, ' + 'Tomat, ' + 'Paprika';
-        fruits.splice(1, 0, nyaFrukter);
+        
+        fruits.splice(1, 0, 'Apelsin', 'Tomat', 'Paprika');
         console.log (fruits);
 
 
@@ -114,7 +113,9 @@ console.log(lista.sort((a, b) => a - b)); */
 
         let nums = [1,2,3,4,5,6,7,8,9];
         // 17.spegelvänd arrayen ovan
-        console.log(nums.sort((a, b) => b - a));
+        nums.reverse()
+        console.log('Methods 17', nums)
+        /* console.log(nums.sort((a, b) => b - a)); */ // egen variant 
 
         
         let str = 'Supercalifragilisticexpialidocious';
