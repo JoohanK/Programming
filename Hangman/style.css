@@ -37,13 +37,20 @@ h1 {
 
 ul {
     list-style: none;
-    padding: 0;
+    
 }
 
 ul li {
     display: inline-block;
     margin-right: 5px;
     font-size: 20px;
+
+   
+}
+
+.guesses {
+    min-height: 100px;
+   
 }
 
 input[type="text"] {
@@ -69,3 +76,8 @@ button:hover {
 #ground, #scaffold, #head, #body, #arms, #legs {
     display: none;
 }
+
+#wrong-guesses span {
+    color: red;
+  }
+

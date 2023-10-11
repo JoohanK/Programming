@@ -19,31 +19,36 @@ const resultText = document.getElementById("result-text");
 const correctWordDisplay = document.getElementById("correct-word");
 const playAgainButton = document.getElementById("play-again-button");
 
+
+// Starta timern när spelet börjar
+
+startTimer();
+updateWordDisplay(); // startar spelet
 // Function to update the word display
 function updateWordDisplay() {
     wordDisplay.innerHTML = "";
     for (let i = 0; i < randomWord.length; i++) {
         if (correctGuesses[i]) {
-            wordDisplay.innerHTML += `<span>${randomWord[i]}</span>`;
+            wordDisplay.innerHTML += `${randomWord[i]}`;
         } else {
-            wordDisplay.innerHTML += "<span>_</span>";
+            wordDisplay.innerHTML += " _ ";
         }
-        if (i < randomWord.length - 1) {
+       /*  if (i < randomWord.length - 1) {
             wordDisplay.innerHTML += " "; // Lägg till ett mellanrum om vi inte är på den sista bokstaven
-        }
+        } */
     }
 }
 // Function to handle a guess
 function makeGuess() {
     const guessInput = document.getElementById("guess-input");
     const guess = guessInput.value.toLowerCase();
-
-    if (guess.length !== 1 || !/[a-z]/.test(guess)) {
+            //Varningar som säger instruerar användaren att den gjort "fel"
+    if (!/[a-z]/.test(guess)) {
         alert("Please enter a single letter.");
         guessInput.value = "";
         return;
     }
-
+        //correctguess om man tar samma igen funkar ej
     if (correctGuesses.includes(guess) || wrongGuesses.includes(guess)) {
         alert("You've already guessed that letter.");
     } else if (randomWord.includes(guess)) {
@@ -51,6 +56,8 @@ function makeGuess() {
             if (randomWord[i] === guess) {
                 correctGuesses[i] = true;
             }
+
+            
         }
         updateWordDisplay();
     } else {
@@ -58,8 +65,7 @@ function makeGuess() {
         incorrectGuesses++;
         wrongGuessesDisplay.innerHTML = wrongGuesses.join(", ");
         handleIncorrectGuess();
-        updateHangman();
-        
+    
     }
 
     guessInput.value = "";
@@ -100,7 +106,7 @@ function handleIncorrectGuess() {
 
 // Function to end the game and show the result
 function endGame(isWinner) {
-    playAgainButton.style.display = "block";
+    /* playAgainButton.style.display = "block"; */
     if (isWinner) {
         resultText.textContent = "You won!";
     } else {
@@ -114,7 +120,7 @@ const guessButton = document.getElementById("guess-button");
 guessButton.addEventListener("click", makeGuess);
 
 
-playAgainButton.addEventListener("click", () => {
+/* playAgainButton.addEventListener("click", () => {
     randomWord = words[Math.floor(Math.random() * words.length)];
     correctGuesses = Array(randomWord.length).fill(false);
     wrongGuesses = [];
@@ -126,18 +132,23 @@ playAgainButton.addEventListener("click", () => {
     correctWordDisplay.textContent = "";
     playAgainButton.style.display = "none";
     resetTimer();
-});
+}); */
+
+// Page reload
+playAgainButton.addEventListener("click",() => 
+{window.location.reload()})
 
 function startTimer() {
     timerInterval = setInterval(function() {
         if (timeLeft <= 0) {
             // Tiden har tagit slut, användaren förlorar
             clearInterval(timerInterval);
+            endGame();
             // Lägg till din logik för förlust här
         } else {
             // Konvertera tiden till formatet mm:ss
             const minutes = Math.floor(timeLeft / 60);
-            const seconds = timeLeft % 60;
+            const seconds = timeLeft  %60;
             const timeString = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
             
             // Uppdatera visningen av tiden
@@ -154,13 +165,4 @@ function resetTimer() {
     timeLeft = 60; // Återställ till 1 minut
     startTimer(); // Starta om timern
 }
-
-
-
-
-// Initialize the game
-updateWordDisplay();
-
-// Starta timern när spelet börjar
 resetTimer();
-startTimer();
