@@ -1,3 +1,4 @@
+
 // Define an array of words to choose from
 const words = ["apple", "banana", "cherry", "date", "elderberry", "fig", "grape", "honeydew"];
 
@@ -14,15 +15,16 @@ let timerInterval;
 // DOM elements
 const wordDisplay = document.getElementById("word-display");
 const wrongGuessesDisplay = document.getElementById("wrong-guesses");
-const hangmanImage = document.querySelector(".hangman svg");
 const resultText = document.getElementById("result-text");
 const correctWordDisplay = document.getElementById("correct-word");
 const playAgainButton = document.getElementById("play-again-button");
 
 
-// Starta timern när spelet börjar
 
-startTimer();
+// Starta timern när spelet börjar
+// ev skapa en startknapp som triggas av klick??
+//ändring
+
 updateWordDisplay(); // startar spelet
 // Function to update the word display
 function updateWordDisplay() {
@@ -33,39 +35,59 @@ function updateWordDisplay() {
         } else {
             wordDisplay.innerHTML += " _ ";
         }
-       /*  if (i < randomWord.length - 1) {
-            wordDisplay.innerHTML += " "; // Lägg till ett mellanrum om vi inte är på den sista bokstaven
-        } */
+    
     }
 }
-// Function to handle a guess
+
+startTimer();
+
+// Eventlistener: trycka enter för att gissa på en bokstav
+
+const guessInput = document.getElementById("guess-input");
+guessInput.addEventListener("keydown",(event) => {
+    if(event.key === "Enter"){makeGuess()}})
+
+
+// Funktion för hantering av gissningar.
+//Skapa en funktion som är enbart för varningar när man gör fel
 function makeGuess() {
     const guessInput = document.getElementById("guess-input");
     const guess = guessInput.value.toLowerCase();
+          
             //Varningar som säger instruerar användaren att den gjort "fel"
     if (!/[a-z]/.test(guess)) {
         alert("Please enter a single letter.");
         guessInput.value = "";
         return;
     }
+
+     // Använd en flagga för att kontrollera om bokstaven redan har gissats
+     let alreadyGuessed = false;
         //correctguess om man tar samma igen funkar ej
     if (correctGuesses.includes(guess) || wrongGuesses.includes(guess)) {
-        alert("You've already guessed that letter.");
+        alreadyGuessed = true;
     } else if (randomWord.includes(guess)) {
         for (let i = 0; i < randomWord.length; i++) {
             if (randomWord[i] === guess) {
+                if (!correctGuesses[i]){
                 correctGuesses[i] = true;
+                updateWordDisplay();
             }
-
-            
+            else{
+                alreadyGuessed = true;
+                }
+            }
         }
-        updateWordDisplay();
     } else {
         wrongGuesses.push(guess);
         incorrectGuesses++;
         wrongGuessesDisplay.innerHTML = wrongGuesses.join(", ");
-        handleIncorrectGuess();
-    
+        updateHangman();
+        
+    }
+
+    if (alreadyGuessed) {
+        alert("You've already guessed that letter.")
     }
 
     guessInput.value = "";
@@ -77,67 +99,109 @@ function makeGuess() {
     }
 }
 
-// Function to update the hangman image
+
+// Funktion för att uppdatera bilden när användaren gissar fel.
+// Skulle ev kunna göras om till en switch.
+
 function updateHangman() {
-    hangmanImage.src = `./img/hangman${incorrectGuesses}.svg`;
-}
-
-// Använd denna funktion när användaren gissar fel
-function handleIncorrectGuess() {
-    // Öka antalet felgissningar
-
-// Här är en enkel logik för att visa respektive del av bilden när användaren gissar fel
-    if (incorrectGuesses === 1) {
-        document.getElementById("ground").style.display = "block";
-    } else if (incorrectGuesses === 2) {
-        document.getElementById("scaffold").style.display = "block";
-    } else if (incorrectGuesses === 3) {
-        document.getElementById("head").style.display = "block";
-    } else if (incorrectGuesses === 4) {
-        document.getElementById("body").style.display = "block";
-    } else if (incorrectGuesses === 5) {
-        document.getElementById("arms").style.display = "block";
-    } else if (incorrectGuesses === 6) {
-        document.getElementById("legs").style.display = "block";
-        // Användaren har förlorat
-        // Visa förlorad meddelande eller hantera spelet som du önskar
+    switch (incorrectGuesses) {
+        case 1:
+            document.getElementById("ground").style.display = "block";
+            break;
+        case 2:
+            document.getElementById("scaffold").style.display = "block";
+            break;
+        case 3:
+            document.getElementById("head").style.display = "block";
+            break;
+        case 4:
+            document.getElementById("body").style.display = "block";
+            break;
+        case 5:
+            document.getElementById("arms").style.display = "block";
+            break;
+        case 6:
+            document.getElementById("legs").style.display = "block";
+            // Användaren har förlorat
+            // Visa förlorad meddelande eller hantera spelet som du önskar
+            break;
+        default:
+            // Om incorrectGuesses inte matchar något av de ovanstående fallen
+            break;
     }
 }
 
-// Function to end the game and show the result
+// Funktion för att avsluta spelet och visa resultatet
+let hideEndOFGame = document.querySelector(".container")
+let showTitle = document.querySelector(".result")
+// När du förlorar (till exempel i din `endGame`-funktion)
+const loseImg = document.getElementById("loseImg");
+const winImg = document.getElementById("winImg")
+
 function endGame(isWinner) {
-    /* playAgainButton.style.display = "block"; */
+   
+    const winSound = document.getElementById("winSound");
+    const loseSound = document.getElementById("loseSound");
+    const winSound2 = document.getElementById("winSound2");
+    const loseSound2 = document.getElementById("loseSound2");
+    
     if (isWinner) {
         resultText.textContent = "You won!";
+        hideEndOFGame.style.display = "none";
+        showTitle.style.display = "block";
+        correctWordDisplay.textContent = `Congratulations you are the best!`;
+        // Spela vinnarljudet
+        winSound.play();
+        winSound2.play();
+        winImg.classList.remove("hiddenTillWin")
+        stopTimer();
+        
     } else {
         resultText.textContent = "You lost!";
-        correctWordDisplay.textContent = `The correct word was: ${randomWord}`;
+        hideEndOFGame.style.display = "none";
+        correctWordDisplay.innerHTML = `The correct word was: <span> ${randomWord} </span> `;
+        showTitle.style.display = "block";
+        // Spela förlustljudet
+        loseSound.play();
+        loseSound2.play();
+        loseImg.classList.remove("hiddenTillLose");
+        stopTimer();
+        
+        
+        
     }
 }
 
-// Event listeners
-const guessButton = document.getElementById("guess-button");
-guessButton.addEventListener("click", makeGuess);
 
 
-/* playAgainButton.addEventListener("click", () => {
-    randomWord = words[Math.floor(Math.random() * words.length)];
-    correctGuesses = Array(randomWord.length).fill(false);
-    wrongGuesses = [];
-    incorrectGuesses = 0;
-    wrongGuessesDisplay.innerHTML = "";
-    updateWordDisplay();
-    updateHangman();
-    resultText.textContent = "";
-    correctWordDisplay.textContent = "";
-    playAgainButton.style.display = "none";
-    resetTimer();
-}); */
-
-// Page reload
+// Eventlistener som gör en Page reload vid tryck på playagain-knappen
 playAgainButton.addEventListener("click",() => 
 {window.location.reload()})
 
+// Gör att man kan trycka Enter för att köra playagian. Man måste alltså inte klicka. Båda funkar
+document.addEventListener("keydown", function(event) {
+    if (event.key === "Enter" && showTitle.style.display === "block") {
+        // Kontrollera om inmatningsrutan är fokuserad
+        if (document.activeElement !== guessInput) {
+            window.location.reload();
+        }
+    }
+});
+
+
+// Event listeners för den tidigare gissningknappen. Just nu bortkommenterad i html.
+/* const guessButton = document.getElementById("guess-button");
+guessButton.addEventListener("click", makeGuess); */
+
+
+// Eventlistener som gör en Page reload vid tryck på playagain-knappen
+playAgainButton.addEventListener("click",() => 
+{window.location.reload()})
+
+
+
+
+//Funktion för att starta timer
 function startTimer() {
     timerInterval = setInterval(function() {
         if (timeLeft <= 0) {
@@ -160,9 +224,13 @@ function startTimer() {
     }, 1000); // Uppdatera varje sekund
 }
 
-function resetTimer() {
+function stopTimer() {
     clearInterval(timerInterval);
-    timeLeft = 60; // Återställ till 1 minut
-    startTimer(); // Starta om timern
 }
-resetTimer();
+
+//Funktion för att återställa timer. Starta den igen.
+
+
+
+
+
