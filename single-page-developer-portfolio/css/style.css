@@ -1,3 +1,9 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 @font-face {
     font-family: 'Space Grotesk';
     src: url(./assets/fonts/SpaceGrotesk-VariableFont.woff2) format('woff2');
@@ -64,6 +70,7 @@
     color-scheme: dark light;
   }
   
+  
   html:focus-within {
     scroll-behavior: smooth;
   }
@@ -122,11 +129,11 @@
   }
 
   h1 {
-    color: #7be7a4;;
+    color: #ffffff;;
   }
 
   h2 {
-    color: #7be7a4;;
+    color: #ffffff;;
   }
 
   
@@ -227,17 +234,20 @@
   /* Links */
   
   .header {
+    display: flex;
     padding-top: 1.25rem;
     padding-inline: var(--body-inline-padding);
   }
   
   .logo {
+   
     font-size: var(--fs-500);
     font-weight: 700;
     letter-spacing: -0.02775rem;
     line-height: 1;
     text-decoration: none;
-    color: var(--clr-neutral-100);
+    color: rgb(255, 255, 255);
+    margin-left: 0.3rem;
   
     transition: color var(--highlight-duration) ease-out;
   }
@@ -255,9 +265,35 @@
   
   .social {
     display: flex;
+    justify-content: space-around;
     gap: 1.15rem;
     list-style: none;
   }
+  
+  .navBar {
+   display: flex;
+    list-style: none;
+    gap: 2rem;
+    
+    
+  }
+
+  .navBar a {
+    text-decoration: none;
+    color: #f7f7f7;
+    transition: color var(--highlight-duration) ease-out;
+  }
+
+  .navBar a:is(:hover, :focus) {
+    color: var(--clr-accent);
+  }
+  
+
+  
+
+  
+
+  
   
   .social path {
     transition: fill var(--highlight-duration) ease-out;
@@ -279,6 +315,7 @@
   
     .social {
       gap: 1.75rem;
+      margin-right: 0.4rem;
     }
   }
   
@@ -288,7 +325,7 @@
     }
   
     .header .social {
-      margin-right: 1.84rem;
+      ;
     }
   }
   
@@ -340,6 +377,7 @@
   
   .hero__content {
     text-align: center;
+    padding: ;
   
     margin-top: 20.69rem;
   }
@@ -361,6 +399,7 @@
   
   .hero__text {
     margin-block: 1.5rem;
+    margin-left: 0.3rem;
   }
   
   @media (width>45em) {
@@ -471,7 +510,7 @@
   }
 
   #skills__title.heading-xl {
-    color: #7be7a4;
+    color: #ffffff;
     display: grid;
     grid-column: span 3;
     justify-self: center;
@@ -804,7 +843,8 @@
 
   picture {
     margin-top: 220px ;
-    border: solid 5px hsla(153, 71%, 59%, 1);
+    margin-right: 0;
+    border: solid 5px rgb(255, 255, 255);
     border-radius: 10px;
     box-shadow: 0 0 100px black;
   }

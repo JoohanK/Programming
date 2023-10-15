@@ -26,7 +26,7 @@ const playAgainButton = document.getElementById("play-again-button");
 //ändring
 
 updateWordDisplay(); // startar spelet
-// Function to update the word display
+// Function to update the word display when you make a right guess
 function updateWordDisplay() {
     wordDisplay.innerHTML = "";
     for (let i = 0; i < randomWord.length; i++) {
@@ -69,7 +69,7 @@ function makeGuess() {
     } else if (randomWord.includes(guess)) {
         for (let i = 0; i < randomWord.length; i++) {
             if (randomWord[i] === guess) {
-                if (!correctGuesses[i]){
+                if (!correctGuesses[i]){ // Om inte vi redan gissat rätt på den bokstaven
                 correctGuesses[i] = true;
                 updateWordDisplay();
             }
@@ -162,7 +162,7 @@ function endGame(isWinner) {
         correctWordDisplay.innerHTML = `The correct word was: <span> ${randomWord} </span> `;
         showTitle.style.display = "block";
         // Spela förlustljudet
-        loseSound.play();
+       loseSound.play(); 
         loseSound2.play();
         loseImg.classList.remove("hiddenTillLose");
         stopTimer();
