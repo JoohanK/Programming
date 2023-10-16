@@ -21,11 +21,11 @@
     --fs-700: 2rem;
     --fs-900: 2.5rem;
   
-    --clr-primary: rgb(49, 43, 43);
+    --clr-primary: rgb(175, 175, 175);
     --clr-accent: #7be7a4;
-    --clr-neutral-100: rgb(215, 205, 205);
-    --clr-neutral-400: hsla(0, 0%, 85%, 1);
-    --clr-neutral-700: hsla(0, 0%, 14%, 1);
+    --clr-neutral-100: rgb(15, 7, 7);
+    --clr-neutral-400: rgb(56, 55, 55);
+    --clr-neutral-700: rgb(86, 86, 86);
   
     --clr-error: hsla(7, 100%, 68%, 1);
   
@@ -129,11 +129,11 @@
   }
 
   h1 {
-    color: #ffffff;;
+    color: rgb(14, 9, 9);;
   }
 
   h2 {
-    color: #ffffff;;
+    color: #000000;;
   }
 
   
@@ -246,7 +246,7 @@
     letter-spacing: -0.02775rem;
     line-height: 1;
     text-decoration: none;
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     margin-left: 0.3rem;
   
     transition: color var(--highlight-duration) ease-out;
@@ -280,7 +280,7 @@
 
   .navBar a {
     text-decoration: none;
-    color: #f7f7f7;
+    color: #070202;
     transition: color var(--highlight-duration) ease-out;
   }
 
@@ -324,9 +324,7 @@
       padding-top: 2.69rem;
     }
   
-    .header .social {
-      ;
-    }
+   
   }
   
   /* Hero Section */
@@ -377,7 +375,7 @@
   
   .hero__content {
     text-align: center;
-    padding: ;
+    padding: 0;
   
     margin-top: 20.69rem;
   }
@@ -510,7 +508,7 @@
   }
 
   #skills__title.heading-xl {
-    color: #ffffff;
+    color: #060404;
     display: grid;
     grid-column: span 3;
     justify-self: center;
@@ -768,7 +766,7 @@
   }
   
   .contact__form .form-input:hover {
-    background-color: hsla(0, 0%, 0%, 0.1);
+    background-color: hsl(0, 1%, 55%);
     border-radius: 0.5rem 0.5rem 0 0;
   }
   
