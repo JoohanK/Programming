@@ -1,24 +1,21 @@
+/* Nollställer standard css */
 * {
 margin: 0;
 padding: 0;
 box-sizing: border-box;
 }
 
+/* Styling och position på planeterna och solen */
 body {
     display: flex;
-    flex-direction: column;
     background-color: rgb(24, 10, 39);
     justify-content: center;
-    align-items: center;
     height: 100vh;
     width: 100vw;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    line-height: 1.2;
-
-    
-    
+    line-height: 1.2; 
 }
-
+/* Solsystemet solaris styling och position */
 header {
     position: absolute;
     top: 10px;
@@ -29,41 +26,36 @@ header {
     font-size: 20px;
     text-shadow: 0px 0px 20px red
 }
+
+/* min planeter och solen, skall ligga i linje */
 main {
     display: flex;
     align-items: center;
-    
-  
-    
 }
 
+/* Placera behållaren längst till vänster */
+/* Fast position så man bara ser lite av */
 .sun-container {
-    
-  
-    height: 600px; /* Höjd på container (hälften av solens höjd) */
-    overflow: hidden; /* Döljer allt som är utanför behållaren */
     position: absolute;
-    left: -400px; /* Placera behållaren längst till vänster */
-    padding-right: 50px;
-   
+    left: -500px; 
 }
 
+/* Styling på solen, storlek, färg, glödhet, form */
 .sun {
     width: 600px;
     height: 600px;
     background-color: rgb(255, 204, 0);
     border-radius: 50%;
     box-shadow: 20px 0px 20px rgba(255, 111, 0, 0.5);
-    
-    
-}
 
+}
+/* Styling för samtliga planeter*/
 .planet {
     margin: 20px;
     border-radius: 50%;
     cursor: pointer;
 }
-
+ /* Styling för varje planet enskilt */
 .planet.mercury {
     width: 20px;
     height: 20px;
@@ -71,7 +63,7 @@ main {
     
     
 }
-/* Stil för planeten Venus */
+
 .planet.venus {
     width: 40px;
     height: 40px;
@@ -80,15 +72,13 @@ main {
    
 }
 
-/* Stil för planeten Jorden */
 .planet.jorden {
     width: 50px;
     height: 50px;
-    background-color: #3770b4; /* Blå färg för Jorden */
+    background-color: #3770b4; 
     
 }
 
-/* Stil för planeten Mars */
 .planet.mars {
     width: 30px;
     height: 30px;
@@ -128,45 +118,22 @@ main {
 }
 
 
-
-.wrapper {
-    display: flex;
-    flex-direction: column;
+/*Styling och position av hela sidan när man tryckt in på en planet*/
+.planet-info-container {
+    display: none; /*Visas inte förens man trycker på en planet*/
+    flex-direction: column;/*Stängknappen skall ligga under faktarutan*/
     align-items: center;
     justify-content: center;
-    min-height: 60vh;
-}
-
-/* Tidigare CSS-stilar */
-
-.planet-info-container {
-    display: none; 
-    flex-direction: column;
-    position: fixed;
+    position: fixed;/*För att ligga över planeten*/
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(9, 8, 8, 0.7); /* Transparant bakgrundsfärg */
-
-    align-items: center;
-    justify-content: center;
+    background: rgba(9, 8, 8, 0.7);
    
 }
 
-
-#close-info {
-   display: flex;
-    margin-top: 20px;
-    right: 10px;
-    background: none;
-    border: none;
-    color: white;
-    font-size: 1.5em;
-    cursor: pointer;
-}
-
-
+/*Styling, storlek och position av faktarutan*/
 .planet-info {
     background-color: rgba(41, 10, 221, 0.1);
     padding: 20px;
@@ -179,12 +146,19 @@ main {
     
 }
 
-/* #name-info {
-    
+/*Styling av min stängknapp*/
+#close-info {
+    margin-top: 20px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5em;
+    cursor: pointer;
+}
 
-} */
+/*******************************************************/
 
-
+/*Styling av min data*/
 #planet-name {
     font-size: 100px;
     font-weight: bold;
@@ -204,34 +178,22 @@ main {
    
   }
 
+
 #random-info {
     border-top: solid 1px goldenrod;
     font-size: 20px;
     color: white;
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /*Använder för att wrapa min data till en ny rad när den inte får plats på en*/
     justify-content: space-between;
   }
 
+  /*Stylar alla barnen till random-info och fixar positionen/storleken som dom skall ta upp*/
 #random-info > * {
     flex-basis: calc(50% - 20%);
     margin: 40px;
 }
-/* 
-#distance {
 
-  }
-#orbital-period {
-
-  }
-
-
-#temp-day {
-
-  }
-#temp-night {
-
-  } */
 
 #moons {
     display: flex;
