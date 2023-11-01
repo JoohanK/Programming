@@ -14,7 +14,12 @@ body {
     width: 100vw;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     line-height: 1.2; 
+    position: relative;
 }
+
+
+
+
 /* Solsystemet solaris styling och position */
 header {
     position: absolute;
@@ -57,31 +62,31 @@ main {
 }
  /* Styling för varje planet enskilt */
 .planet.mercury {
-    width: 20px;
-    height: 20px;
+    width: 10px;
+    height: 10px;
     background-color: rgb(184, 170, 170);
     
     
 }
 
 .planet.venus {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     background-color: rgb(235, 231, 225);
     
    
 }
 
 .planet.jorden {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     background-color: #3770b4; 
     
 }
 
 .planet.mars {
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     background-color: rgb(255, 89, 0);
     
 }
@@ -90,18 +95,34 @@ main {
     width: 150px;
     height: 150px;
     background-color: rgb(211, 136, 82);
-    
     margin-right: 50px;
 
 }
-
 .planet.saturnus {
     width: 120px;
     height: 120px;
     background-color: rgb(203, 161, 83);
-    
+    position: relative; /* Lägger till position: relative för att använda ::before och ::after */
     margin-right: 50px;
+    transform: rotate(145deg);
 }
+
+.planet.saturnus::before
+ {
+    content: "";
+    position: absolute;
+    width: 180px; /* Bredd på ringen */
+    height: 5px; /* Höjd på ringen */
+    background-color: #ccc; /* Färg på ringen (grå i det här fallet) */
+    border-radius: 50%;
+    top: 50%; /* Placera ringen horisontellt i mitten av Saturnus */
+    left: -30px; /* Justera positionen till vänster om Saturnus */
+    transform: translateY(-50%); /* Centrera vertikalt */
+}
+
+
+
+
 .planet.uranus {
     width: 80px;
     height: 80px;
@@ -119,7 +140,7 @@ main {
 
 
 /*Styling och position av hela sidan när man tryckt in på en planet*/
-.planet-info-container {
+.planet-info-overlay{
     display: none; /*Visas inte förens man trycker på en planet*/
     flex-direction: column;/*Stängknappen skall ligga under faktarutan*/
     align-items: center;
@@ -130,7 +151,28 @@ main {
     width: 100%;
     height: 100%;
     background: rgba(9, 8, 8, 0.7);
-   
+    
+
+}
+
+/*Lägger en design på min stjärnor som skapades när jag trycker på en planet*/
+.star {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    background: #fff;
+    border-radius: 50%;
+    animation: twinkle 2s linear infinite; /*Gör att stjärnorna blinkar*/
+}
+
+/*Testar att använda en ny effekt som gör att mina stjärnor blinkar*/
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
 }
 
 /*Styling, storlek och position av faktarutan*/

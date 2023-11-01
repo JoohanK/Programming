@@ -7,26 +7,44 @@ const sun = document.querySelector(".sun");
 const overlay = document.querySelector(".overlay");
 const factBox = document.querySelector(".fact-box");
 
-// Lägg till klickhändelse på varje planet
-planets.forEach((planet) => {
-    planet.addEventListener("click", () => {
-        // Ändra solens färg till månljus (ljusblå)
-        sun.style.backgroundColor = "lightblue";
+// URL för POST-förfrågan
+const postUrl = 'https://n5n3eiyjb0.execute-api.eu-north-1.amazonaws.com/';
 
-        // Visa faktarutan
-        overlay.style.display = "block";
+// Skapa ett JSON-objekt med de data du vill skicka i POST-förfrågan
+const postData = {
+  // Lägg till de nödvändiga data för POST-förfrågan här
+  // Exempel: name: 'Ditt namn'
+};
 
-        // Lägg till information om planeten i faktarutan
-        if (planet.classList.contains("jorden")) {
-            // Om klickad planet är Jorden, lägg till information om Jorden
-            factBox.textContent = "Information om Jorden: [Din information här]";
-        } else if (planet.classList.contains("mercury")) {
-            // Lägg till information om Merkurius
-            factBox.textContent = "Information om Merkurius: [Din information här]";
-        }
-        // Lägg till andra planeter här...
-    });
-});
+// Gör POST-förfrågan
+fetch(postUrl, {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(postData)
+})
+  .then(response => response.json())
+  .then(data => {
+    // Här får du tillbaka nyckeln från POST-förfrågan
+    const apiKey = data.apiKey;
+
+    // Nu kan du använda den här nyckeln i dina GET-förfrågningar
+    // Exempel: Gör en GET-förfrågan med apiKey
+    fetch('https://n5n3eiyjb0.execute-api.eu-north-1.amazonaws.com/?apiKey=' + apiKey, {
+      method: 'GET'
+    })
+      .then(response => response.json())
+      .then(data => {
+        // Här kan du hantera svaret från GET-förfrågan
+      })
+      .catch(error => {
+        console.error('Något gick fel med GET-förfrågan: ', error);
+      });
+  })
+  .catch(error => {
+    console.error('Något gick fel med POST-förfrågan: ', error);
+  });
 
 // Lägg till klickhändelse för att stänga faktarutan
 overlay.addEventListener("click", () => {

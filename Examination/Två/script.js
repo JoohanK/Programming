@@ -7,7 +7,7 @@ const planets = document.querySelectorAll(".planet");
 //solen, en aside som ligger i main
 const sun = document.querySelector(".sun");
 //Hela sidan när man tryckt in på en planet
-const planetInfoContainer = document.querySelector(".planet-info-container");
+const planetInfoOverlay = document.querySelector(".planet-info-overlay");
 //Faktarutan när man tryckt in på en planet
 const factBox = document.querySelector(".planet-info");
 //Stängknappen
@@ -40,11 +40,13 @@ function fetchData() {
           planet.addEventListener('click', () => {
             document.body.style.backgroundColor = "black"; 
             sun.style.backgroundColor = "lightblue"; 
-            planetInfoContainer.style.display = "flex" ;
+            planetInfoOverlay.style.display = "flex"; //planetInfoOverlay går från display none till flex och syns nu.
+
             
-            //Anväder innerhtml på min factBox (planet-info) för att skapa olika idn på all olik data, detta gör jag för att sen kunna style min data i css. 
+           
+            
+            //Anväder innerhtml på min factBox (planet-info) för att skapa olika idn på all olik data, detta gör jag för att jag sen ska kunna style min data i css. 
             //Skapar också "containers" för min data, fyra totalt name-info, description, random-info och moons.
-          
             factBox.innerHTML = `
             
             <div id="name-info">
@@ -65,12 +67,40 @@ function fetchData() {
             <div id="moons"><h2>Månar</h2> ${planetData.moons.join(', ')}</div>`
         
             
-            //Alla planeter förutom den jag tryckt på skall försvinna (display none).  
+            //Alla planeter förutom den jag tryckt på skall försvinna (display none). 
+            //Den planeten som jag tryckt på är den enda som blir kvar och syns i faktarutan fast lite bakom på ett snyggt sätt. 
             planets.forEach(otherPlanet => {
                 if (otherPlanet !== planet) {
                     otherPlanet.style.display = 'none';
                 }
             });
+
+            //Testade först att skapa stjärnhimmel i css med after/before. 
+            //Tyckte inte det kändes nice så jag testade mig fram med en for-loop som skapar stjärnor(divar)
+            //Valde denna metoden för att den är intressant och kan vara användbar i framtiden
+             // Skapar 100 stjärnor genom att loopa från 1-100, siffrorna blir divar med en och samma class "star" och blir barn till planetInfoOverlay
+             for (let i = 0; i < 100; i++) {
+              const star = document.createElement("div");
+              star.className = "star";
+              planetInfoOverlay.appendChild(star);
+              }
+              
+              //Har samlat mina DOM längst upp i scripten men denna måste ligga här i eftersom "star" skapas i denna funktion.
+              const allStars = document.querySelectorAll(".star");
+  
+              // Placera stjärnorna slumpmässigt inom planetInfoOverlay
+              // Nu slumpar jag ut 100 olika platser på skärmen där min stjärnor kan lägga sig
+              allStars.forEach(star => {
+              // 100 står för 100% av bredden/höjden
+              const x = Math.random() * 100; // Slumpmässig x-koordinat (0-100%) horisontellt
+              const y = Math.random() * 100; // Slumpmässig y-koordinat (0-100%) lodrätt
+              
+              // Använder nu .style för att kunna ge css direkt här i scripten
+              // left och top är för den horisontella samt lodräta placeringen av mina stjärnor. Vi ger också deras slumpade kordinater "%" för att variablarna skall få ett förhållande till sin förälders visningsarea (planetInfoOverlay)
+              star.style.left = x + "%";
+              star.style.top = y + "%";
+             });
+
 
           });
         });
@@ -94,12 +124,13 @@ closeInfoButton.addEventListener("click", () => {
     //solen skall få tillbaka sin orginalfärg
     sun.style.backgroundColor = "rgb(255, 204, 0)"; 
     //min faktaruta skall försvinnanär jag klicka stäng
-    planetInfoContainer.style.display = "none";
+    planetInfoOverlay.style.display = "none";
    //Alla planeter skall komma tillbaka när jag klickar stäng på faktarutan
     planets.forEach(planet => {
         planet.style.display = 'block';
     }); 
 });
+
 
 
 
