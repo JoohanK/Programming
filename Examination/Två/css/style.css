@@ -8,7 +8,7 @@ box-sizing: border-box;
 /* Styling och position på planeterna och solen */
 body {
     display: flex;
-    background-color: rgb(24, 10, 39);
+    background: linear-gradient(to right, rgb(39, 16, 63), rgb(0, 0, 0));
     justify-content: center;
     height: 100vh;
     width: 100vw;
@@ -48,7 +48,7 @@ main {
 /* Styling på solen, storlek, färg, glödhet, form */
 .sun {
     width: 600px;
-    height: 600px;
+    height: 1000px;
     background-color: rgb(255, 204, 0);
     border-radius: 50%;
     box-shadow: 20px 0px 20px rgba(255, 111, 0, 0.5);
@@ -56,7 +56,7 @@ main {
 }
 /* Styling för samtliga planeter*/
 .planet {
-    margin: 20px;
+    margin: 30px;
     border-radius: 50%;
     cursor: pointer;
 }
@@ -102,7 +102,6 @@ main {
     width: 120px;
     height: 120px;
     background-color: rgb(203, 161, 83);
-    position: relative; /* Lägger till position: relative för att använda ::before och ::after */
     margin-right: 50px;
     transform: rotate(145deg);
 }
@@ -111,13 +110,12 @@ main {
  {
     content: "";
     position: absolute;
-    width: 180px; /* Bredd på ringen */
-    height: 5px; /* Höjd på ringen */
-    background-color: #ccc; /* Färg på ringen (grå i det här fallet) */
+    width: 180px; /* Längd på ringen */
+    height: 3px; /* bredd på ringen */
+    background-color: #ccc; 
     border-radius: 50%;
     top: 50%; /* Placera ringen horisontellt i mitten av Saturnus */
     left: -30px; /* Justera positionen till vänster om Saturnus */
-    transform: translateY(-50%); /* Centrera vertikalt */
 }
 
 
@@ -150,29 +148,10 @@ main {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(9, 8, 8, 0.7);
+   
+  
     
 
-}
-
-/*Lägger en design på min stjärnor som skapades när jag trycker på en planet*/
-.star {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    background: #fff;
-    border-radius: 50%;
-    animation: twinkle 2s linear infinite; /*Gör att stjärnorna blinkar*/
-}
-
-/*Testar att använda en ny effekt som gör att mina stjärnor blinkar*/
-@keyframes twinkle {
-    0%, 100% {
-        opacity: 0;
-    }
-    50% {
-        opacity: 1;
-    }
 }
 
 /*Styling, storlek och position av faktarutan*/
@@ -247,4 +226,22 @@ main {
     padding: 20px;
   }
 
- 
+/*Lägger en design på min stjärnor som skapades när jag trycker på en planet*/
+.star {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    background: #fff;
+    border-radius: 50%;
+    animation: twinkle 2s linear infinite; /*Gör att stjärnorna blinkar*/
+}
+
+/*Testar att använda en ny effekt som gör att mina stjärnor blinkar*/
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+}

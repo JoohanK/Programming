@@ -1,6 +1,4 @@
 //"Solsystemet solaris" är en header
-
-
 //Dom-element
 //Alla planeter, mitt main-element
 const planets = document.querySelectorAll(".planet");
@@ -13,6 +11,9 @@ const factBox = document.querySelector(".planet-info");
 //Stängknappen
 const closeInfoButton = document.getElementById("close-info");
 
+//Jag kör min fetch-funktion och hämtar informationen som ligger på APIn 
+//I detta fall spelar det ingen roll om den ligger före eller efter själva funktionen är deklarerad.
+fetchData();
 
 
 //skapar min fetch function och hämtar api
@@ -29,26 +30,23 @@ function fetchData() {
       //vad jag sen vill göra med min data
       .then((data) => {
 
-        //console.log bara för att se api data
+        //console.log bara för att se api data i consolen
         console.log(data);
         
         // kopplar rätt data till rätt planet. datan går från vänster till höger på mina planeter men jag startar att hämta data från den andra indexplatsen i apit för att den första innehåller fakta om solen som jag exkluderar.
         planets.forEach((planet, index) => {
-          const planetData = data[index+1];
+          const planetData = data[index+1];//Här är +1 för att planeterna skall stämma
           
           //När man klickar en planet visas informationen från Apit i min faktaruta och jag ändrar utseendet på hemsidan för att få en "natt-känsla"
           planet.addEventListener('click', () => {
-            document.body.style.backgroundColor = "black"; 
             sun.style.backgroundColor = "lightblue"; 
+            sun.style.boxShadow = "20px 0px 20px rgba(107, 180, 200, 0.5";
             planetInfoOverlay.style.display = "flex"; //planetInfoOverlay går från display none till flex och syns nu.
 
-            
-           
-            
+       
             //Anväder innerhtml på min factBox (planet-info) för att skapa olika idn på all olik data, detta gör jag för att jag sen ska kunna style min data i css. 
             //Skapar också "containers" för min data, fyra totalt name-info, description, random-info och moons.
             factBox.innerHTML = `
-            
             <div id="name-info">
             <h2 id="planet-name"> ${planetData.name}</h2>
             <div id="latin-name">${planetData.latinName}</div>
@@ -113,19 +111,19 @@ function fetchData() {
   }
   
 
-  //Jag kör min fetch-funktion och hämtar informationen som ligger på APIn 
-  fetchData();
+ 
+
 
   //När man trycker på stäng knappen efter att ha läst faktarutan händer dessa saker
-closeInfoButton.addEventListener("click", () => {
-
-    //webbplatsen skall få tillbaka sin orginal bakgrundsfärg
-    document.body.style.backgroundColor = "rgb(24, 10, 39)"; 
+  //Denna händelselyssnare hade kunnat ligga innanför min fetchfunktion men tyckte att den då blev för stor och innehöll väldigt mycket info så därför la jag denna utanför funktionen
+  closeInfoButton.addEventListener("click", () => {
+    //Solen skall få tillbaka sin orginalfärg på sitt glow
+    sun.style.boxShadow = "20px 0px 20px rgba(255, 111, 0, 0.5)";
     //solen skall få tillbaka sin orginalfärg
     sun.style.backgroundColor = "rgb(255, 204, 0)"; 
     //min faktaruta skall försvinnanär jag klicka stäng
     planetInfoOverlay.style.display = "none";
-   //Alla planeter skall komma tillbaka när jag klickar stäng på faktarutan
+    //Alla planeter skall komma tillbaka när jag klickar stäng på faktarutan
     planets.forEach(planet => {
         planet.style.display = 'block';
     }); 
