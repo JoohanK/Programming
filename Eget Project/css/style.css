@@ -17,8 +17,10 @@
     display: flex;
     width: 5rem;
     height: 5rem;
-    border: solid  rgb(14, 40, 57) 10px;
+   
     border-radius: 10%;
+    mix-blend-mode: multiply;
+    border: solid 10px rgb(43, 80, 104);
     
    
 }
@@ -103,8 +105,10 @@ footer {
     padding-left: 5.3px;
     padding-right: 5px;
     border-radius: 20%;
-    background-color:  rgb(14, 40, 57);
+    background-color:  rgb(43, 80, 104);
     font-size: 16px; 
+    mix-blend-mode: multiply;
+ 
     
   }
 
