@@ -1,8 +1,0 @@
-{
-    "compilerOptions": {
-        "target": "ES6",
-        "outDir": "./dist/js",
-        "strict": true
-    },
-    "include": ["./src"]
-}
