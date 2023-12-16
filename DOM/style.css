@@ -1,0 +1,29 @@
+.odd {
+    font-weight: bold;
+    background-color: yellow;
+}
+
+li {
+    background-color: rgb(162, 107, 107);
+}
+
+.red {
+    background-color: red;
+}
+
+.blue {
+    background-color: blue;
+}
+.green {
+    background-color: green;
+}
+.yellow {
+    background-color: yellow;
+}
+.beige {
+    background-color: beige;
+}
+
+.highlight {
+    font-weight: bold;
+}
