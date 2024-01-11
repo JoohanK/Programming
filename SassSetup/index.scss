@@ -9,7 +9,6 @@ h1 {
         color: red
     }
 }
-
 h1 {
     a {
         color: red
@@ -68,17 +67,7 @@ h1 {
     border-color: red;
 }
 
-h1 {
-    a {
-        color: red
-    }
-}
 
-h1 {
-    a {
-        color: red
-    }
-}
 
 @mixin theme ($theme: darkgrey) {
     border: 1px solid black;
@@ -86,8 +75,3 @@ h1 {
     
 }
 
-h1 {
-    a {
-        color: red
-    }
-}
