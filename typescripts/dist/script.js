@@ -77,4 +77,4 @@ saveCourse({title:"Typescript Bootcamp"},
 () => console.log("Save sucessful"));
 
  */
-console.log("Hello");
+console.log("Hello world!");

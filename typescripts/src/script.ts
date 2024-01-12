@@ -78,4 +78,4 @@ saveCourse({title:"Typescript Bootcamp"},
 
  */
 
-console.log ("Hello")
+console.log ("Hello world!")

@@ -1,0 +1,23 @@
+//skapa variabler
+$primary-green: rgb(27, 131, 27);
+$primary-pink: rgb(186, 41, 155);
+
+//skapa mixin
+@mixin centerRows {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    background-color: $primary-pink;
+}
+
+body {
+    background-color: aqua;
+    .result-container {
+        @include centerRows;
+    }
+}
+
+
+
