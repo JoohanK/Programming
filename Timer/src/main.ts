@@ -33,7 +33,13 @@ import moment from 'moment';
 
   // Lyssna på ändringar i checkboxarna
   checkboxIntervals.addEventListener('change', updateCheckboxValues);
-  checkboxBreak.addEventListener('change', updateCheckboxValues);
+  checkboxBreak.addEventListener('change', function () {
+    // Klicka i checkboxIntervals om checkboxBreak är markerad
+    if (checkboxBreak.checked) {
+      checkboxIntervals.checked = true;
+    }
+    updateCheckboxValues();
+  });
 
   //drop down menu
   dropdownButton.addEventListener("click", toggleMenuOptions);
@@ -49,7 +55,9 @@ import moment from 'moment';
 
   //start, stop
   startButton.addEventListener("click", startTimer);
-  stopButton.addEventListener("click", stopTimer);
+  stopButton.addEventListener("click", function() {
+    location.reload();
+  });
   resetPausButton.addEventListener("click", startTimer);
   //Functions
   function toggleMenuOptions() {
@@ -66,6 +74,10 @@ import moment from 'moment';
   function updateCheckboxValues() {
     shouldRepeat = checkboxIntervals.checked;
     shouldRepeatWithPaus = checkboxIntervals.checked && checkboxBreak.checked;
+
+    if (!shouldRepeat) {
+      checkboxBreak.checked= false;
+    }
     console.log("shouldRepeat:", shouldRepeat);
     console.log("shouldRepeatWithPaus:", shouldRepeatWithPaus);
   }
@@ -97,13 +109,12 @@ import moment from 'moment';
           startBreakTimer();
         } else {
           updateTimerDisplay();  // Uppdatera displayen när timern är klar
-          toggleButtons(false);  // Inaktivera knapparna när timern är klar
+          stopTimer();
         }
       }
     }, 1000);
-  
+    updateBreakTimer();
     updateTimerDisplay();
-    toggleButtons(true);
     stopBreakTimer();
   }
 
@@ -112,7 +123,9 @@ import moment from 'moment';
       clearInterval(timerInterval);
       timerInterval = null;
       endTime = null;
-      toggleButtons(false);
+      updateBreakTimer();
+      updateTimerDisplay();
+      stopBreakTimer();
 
     }
   }
@@ -149,7 +162,6 @@ import moment from 'moment';
     }, 1000);
     stopTimer();
     updateBreakTimer();
-    toggleButtons(true);
   }
 
   function stopBreakTimer() {
@@ -157,7 +169,6 @@ import moment from 'moment';
       clearInterval(breakTimerInterval);
       breakTimerInterval = null;
       breakEndTime = null;
-      toggleButtons(false);
     }
   }
 
@@ -172,15 +183,6 @@ import moment from 'moment';
   }
   }
 
-
-  function toggleButtons(running: boolean) {
-    startButton.disabled = running;
-    stopButton.disabled = !running;
-    timerInput.disabled = running;
-    reduceTimeButton.disabled = running;
-    addTimeButton.disabled = running;
-
-  };
 
   function adjustTime(delta: number) {
     const currentValue = parseInt(timerInput.value, 10);
