@@ -1,19 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div id="timeContainer">
-        <div id="timeDisplay">00:00:00</div>
-        <button id="startBtn" class="timerBtn">Start</button>
-        <button id="pauseBtn" class="timerBtn">Pause</button>
-        <button id="resetBtn" class="timerBtn">Reset</button>
-    </div>
-    <script src="script.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./src/style.css" />
+    <title>Vite + TS</title>
+  </head>
+  <body>
+    
+    <header>
+      <div class="dropdown-menu">
+        <button class="dropdown-button">(Menu)</button>
+        <div class="menu-hidden">
+          <button class="analog">Analog</button>
+          <button class="digital">Digital</button>
+          <button class="visual">Visual</button>
+          <button class="text">Text</button>
+          <button class="circles">Circles</button>
+        </div>
+      </div>
+    </header>
+
+ 
+    <section class="set-timer">
+      <button class="reduce-time"> &lt; </button>
+      <input type="number" id="timer-input" min="1" value="10">minutes
+      <button class="add-time">></button>
+    </section>
+
+    <section class="checkbox-menu">
+    <label for="checkbox-intervals">
+      <input type="checkbox" id="checkbox-intervals"> Intervals
+    </label>
+    <label for="checkbox-break">
+      <input type="checkbox" id="checkbox-break"> 5 min break / interval
+    </label>
+    </section>
+
+    
+    <button id="start-button">Start Timer</button>
+    <button id="stop-button">Abort timer</button>
+    <button id="reset-paus-button">Reset paus</button>
+
+    <div id="timer-display">00:00</div>
+    <div id="timer-display-break">00:00</div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
 </html>
