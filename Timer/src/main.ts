@@ -1,11 +1,16 @@
 import "./style.css";
 import "./scss/styles.scss";
+import "./scss/pages/_analog.scss"
+
 import moment from 'moment';
+import {startAnalogClock, stopAnalogClock}from './modules/analog';
+
+
 
   // HTML-element
   const dropdownButton = document.querySelector('.dropdown-button') as HTMLButtonElement;
   const menuHidden = document.querySelector('.menu-hidden') as HTMLDivElement;
-  const analogButton = document.querySelector('.analog') as HTMLButtonElement;
+  const analogButton = document.querySelector('.analogButton') as HTMLButtonElement;
   const digitalButton = document.querySelector('.digital') as HTMLButtonElement;
   const visualButton = document.querySelector('.visual') as HTMLButtonElement;
   const textButton = document.querySelector('.text') as HTMLButtonElement;
@@ -20,13 +25,14 @@ import moment from 'moment';
   const stopButton = document.getElementById('stop-button') as HTMLButtonElement;
   const timerBreak = document.getElementById('timer-display-break') as HTMLDivElement;
   const resetPausButton = document.getElementById('reset-paus-button') as HTMLButtonElement;
+  const analogTimerSection: HTMLElement | null = document.getElementById('analogTimerSection');
 
-  // Timer-variabler
+
   let timerInterval: number | null = null;
   let endTime: moment.Moment | null = null;
   let breakTimerInterval: number | null = null;
   let breakEndTime: moment.Moment | null = null;
-
+  let analogTimerVisible: boolean = false;
   let shouldRepeat = checkboxIntervals.checked;
   let shouldRepeatWithPaus = checkboxIntervals.checked && checkboxBreak.checked;
 
@@ -43,7 +49,7 @@ import moment from 'moment';
 
   //drop down menu
   dropdownButton.addEventListener("click", toggleMenuOptions);
-  analogButton.addEventListener("click", showView);
+  analogButton.addEventListener("click", toggleAnalogTimer);
   digitalButton.addEventListener("click", showView);
   visualButton.addEventListener("click", showView);
   textButton.addEventListener("click", showView);
@@ -82,7 +88,6 @@ import moment from 'moment';
     console.log("shouldRepeatWithPaus:", shouldRepeatWithPaus);
   }
 
-
   function startTimer() {
     const minutes: number = parseInt(timerInput.value, 10);
     if (isNaN(minutes) || minutes <= 0) {
@@ -91,10 +96,10 @@ import moment from 'moment';
     }
     console.log("hej")
     endTime = moment().add(minutes, 'minutes');
-  
+    startAnalogClock(endTime);
     timerInterval = setInterval(() => {
       updateTimerDisplay();
-  
+     
       const now = moment();
       const duration = moment.duration(endTime!.diff(now));
       const minutes = Math.max(0, Math.floor(duration.asMinutes())); // Kontrollera att minuterna inte är negativa
@@ -102,14 +107,17 @@ import moment from 'moment';
   
       if (minutes === 0 && seconds === 0) {
         stopTimer();
+        stopAnalogClock();
   
         if (shouldRepeat && !shouldRepeatWithPaus) {
           startTimer();
+          
         } else if (shouldRepeatWithPaus) {
           startBreakTimer();
         } else {
           updateTimerDisplay();  // Uppdatera displayen när timern är klar
           stopTimer();
+          stopAnalogClock();
         }
       }
     }, 1000);
@@ -183,11 +191,19 @@ import moment from 'moment';
   }
   }
 
+  function adjustTime(delta: number): void {
+    const currentValue: number = parseInt(timerInput.value, 10);
 
-  function adjustTime(delta: number) {
-    const currentValue = parseInt(timerInput.value, 10);
     if (!isNaN(currentValue)) {
-      timerInput.value = Math.max(1, currentValue + delta).toString();
+        timerInput.value = Math.max(1, currentValue + delta).toString();
     }
-  }
+}
 
+function toggleAnalogTimer() {
+  // Invertera värdet på variabeln
+  analogTimerVisible = !analogTimerVisible;
+
+  // Sätt display-egenskapen baserat på variabelns värde
+  if (analogTimerSection) {
+      analogTimerSection.style.display = analogTimerVisible ? 'block' : 'none';
+  }}
