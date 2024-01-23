@@ -1,0 +1,22 @@
+ul {
+
+display: flex;
+    justify-content: center;
+    background-color: rgb(97, 145, 145);
+    align-items: center;
+    padding: 1rem;
+    flex-wrap: wrap;
+    
+        
+    
+}
+
+
+
+li {
+    display: flex;
+    border: solid 5px black;
+    list-style-type: none;
+   
+    
+}

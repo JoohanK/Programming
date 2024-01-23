@@ -1,0 +1,52 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: lightgray;
+    margin: 2rem;
+    border: 1px solid black;
+}
+
+.menu-easy {
+    display: flex;
+     list-style: none;
+   
+    width: 30rem;
+  margin-left: 10rem;
+
+
+
+ 
+}
+
+.menu-easy > li {
+   
+    flex-grow: 2;
+    padding: 20px;
+    text-align: center;
+    justify-self: stretch;
+
+  
+    
+}
+
+.menu-easy > :hover {
+    background-color: rgb(87, 91, 91);
+}
+
+.login  {
+ display: ;
+border: solid 1px black;
+
+}
+
+.logga {
+    display: flex;
+    position: absolute;
+    justify-content: space-between;
+    padding: 9px;
+     
+}

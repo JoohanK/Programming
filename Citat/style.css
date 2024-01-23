@@ -1,0 +1,54 @@
+body
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: lightgray;
+    width: 100vw;
+ height: 100vh;
+
+}
+
+.brev {
+    
+background-color: white;
+width: 22rem;
+height: 33rem;
+border: solid 1px black;
+justify-content: center;
+align-items: center;
+text-align: center;
+padding: 1rem;
+flex-wrap: wrap;
+padding-bottom: 25px;
+}
+
+.citat {
+    margin-top: 8rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-style: italic;
+    font-size: x-large;
+}
+
+.by {
+
+color: lightgray;
+margin-bottom: 40rem;
+font-size: x-large; 
+font-family: 'Times New Roman', Times, serif;
+margin-bottom: 150px;
+
+}
+
+.punkter {
+    
+font-size: 6em;
+color: darkgray;
+
+}
+
+span
+{
+    color: black;
+   
+}
