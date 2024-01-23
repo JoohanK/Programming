@@ -1,83 +1,71 @@
 import "./style.css";
-import "./scss/styles.scss"
+import "./scss/styles.scss";
+import "./scss/pages/_analog.scss"
 
 import moment from 'moment';
+import {startAnalogClock, stopAnalogClock, toggleAnalogTimer}from './modules/analog';
 
-// Hämtar HTML-element
-const timerInput: HTMLInputElement | null = document.getElementById("timer-input") as HTMLInputElement;
-const startButton: HTMLButtonElement | null = document.getElementById("start-button") as HTMLButtonElement;
-const stopButton: HTMLButtonElement | null = document.getElementById("stop-button") as HTMLButtonElement;
-const timerDisplay: HTMLDivElement | null = document.getElementById("timer-display") as HTMLDivElement;
+import {timerMenu} from './modules/menu';
 
-// Deklaration av variabel för att lagra identifieraren för timer-intervallet
-let timerInterval: number | null = null;
+import {startBreakTimer, stopBreakTimer, updateBreakTimer} from './modules/break';
 
-// Deklaration av variabel för att lagra sluttidpunkten för timern med Moment.js
-let endTime: moment.Moment | null = null;
+import {startTimer, stopTimer, updateTimerDisplay, updateCheckboxValues} from "./modules/counter"
 
-// Funktion för att starta timern
-function startTimer() {
-    // Hämta antalet minuter från användarinput
-    const minutes: number = parseInt(timerInput!.value, 10);
 
-    // Kontrollera om inmatningen är giltig
-    if (isNaN(minutes) || minutes <= 0) {
-        alert("Please enter a valid positive number of minutes.");
-        return;
-    }
 
-    // Beräkna sluttidpunkten för timern med hjälp av Moment.js
-    endTime = moment().add(minutes, 'minutes');
+  // HTML-element
+//   const dropdownButton = document.querySelector('.dropdown-button') as HTMLButtonElement;
+//   const menuHidden = document.querySelector('.menu-hidden') as HTMLDivElement;
+const analogButton = document.querySelector('.analogButton') as HTMLButtonElement;
+const digitalButton = document.querySelector('.digital') as HTMLButtonElement;
+const visualButton = document.querySelector('.visual') as HTMLButtonElement;
+const textButton = document.querySelector('.text') as HTMLButtonElement;
+const circlesButton = document.querySelector('.circles') as HTMLButtonElement;
+const startButton = document.getElementById('start-button') as HTMLButtonElement;
+const stopButton = document.querySelector('.stop-button') as HTMLButtonElement;
+const timerInput = document.getElementById('timer-input') as HTMLInputElement;
+const reduceTimeButton = document.querySelector('.reduce-time') as HTMLButtonElement;
+const addTimeButton = document.querySelector('.add-time') as HTMLButtonElement;
+const resetPausButton = document.getElementById('reset-paus-button') as HTMLButtonElement;
+let dropdownBtn: HTMLButtonElement | any = document.querySelector('.dropdown-button');
 
-    // Starta ett timer-intervall som uppdaterar displayen varje sekund
-    timerInterval = setInterval(() => {
-        updateTimerDisplay();
+//drop down menu
+//   dropdownButton.addEventListener("click", toggleMenuOptions);
+analogButton.addEventListener("click", toggleAnalogTimer);
+digitalButton.addEventListener("click", showView);
+visualButton.addEventListener("click", showView);
+textButton.addEventListener("click", showView);
+circlesButton.addEventListener("click", showView);
+dropdownBtn.addEventListener('click', timerMenu);
 
-        // Kontrollera om nuvarande tid är efter den beräknade sluttidpunkten
-        const now = moment();
-        if (now.isAfter(endTime!)) {
-            // Stoppa timern om sluttidpunkten har passerats
-            stopTimer();
-            alert("Timer is done!");
-        }
-    }, 1000);
+//Öka minska tiden
+reduceTimeButton.addEventListener("click", () => adjustTime(-1));
+addTimeButton.addEventListener("click", () => adjustTime(1));
 
-    // Uppdatera timer-display och knappar
-    updateTimerDisplay();
-    toggleButtons(true);
-}
+//start, stop
+startButton.addEventListener("click", startTimer);
+stopButton.addEventListener("click", function() {
+	location.reload();
+});
 
-// Funktion för att stoppa timern
-function stopTimer() {
-    // Kontrollera om timerInterval är satt
-    if (timerInterval) {
-        // Stoppa timer-intervall och återställ variabler
-        clearInterval(timerInterval);
-        timerInterval = null;
-        endTime = null;
-        toggleButtons(false);
-    }
-}
+resetPausButton.addEventListener("click", startTimer);
+  //Functions
+//   function toggleMenuOptions() {
+//     menuHidden.classList.toggle("hidden");
+//   }
 
-// Funktion för att uppdatera timer-display
-function updateTimerDisplay() {
-    // Kontrollera om endTime är satt
-    if (endTime) {
-        // Beräkna och uppdatera återstående tid på timer-display
-        const duration = moment.duration(endTime.diff(moment()));
-        const minutes = Math.floor(duration.asMinutes());
-        const seconds = Math.floor(duration.seconds());
-        timerDisplay!.innerText = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+function showView(event: Event) {
+    const button = event.target as HTMLButtonElement;
+    // Implementera logik för att visa rätt vy baserat på knappen
+    console.log(`Showing ${button.innerText} view`);
+  }
+
+  //Funktion som göra att vi kan öka och minska tiden med pilarna (i minuter)
+  function adjustTime(delta: number): void {
+    const currentValue: number = parseInt(timerInput.value, 10);
+
+    if (!isNaN(currentValue)) {
+        timerInput.value = Math.max(1, currentValue + delta).toString();
     }
 }
 
-// Funktion för att aktivera/inaktivera knappar beroende på om timern körs eller inte
-function toggleButtons(running: boolean) {
-    startButton!.disabled = running;
-    stopButton!.disabled = !running;
-    timerInput!.disabled = running;
-}
-
-// Lägg till händelselyssnare för start- och stopp-knapparna
-startButton!.addEventListener("click", startTimer);
-stopButton!.addEventListener("click", stopTimer);
