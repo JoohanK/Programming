@@ -4,10 +4,10 @@ console.log("Hej")
 const handSeconds: Element | any = document.querySelector(".hand.seconds");
 const handMinutes: Element | any = document.querySelector(".hand.minutes");
 const numberOfMinutes: Element | any = document.querySelector(".numberOfminutes");
-const analogTimerSection: HTMLElement | null = document.getElementById('analogTimerSection');
-let analogTimerVisible: boolean = false;
+
 const secondMarks: string[] = [];
 
+// Loop som loopar fram indikationer för varje sträck som visar klockans sekunder/minuter.
 for (let i = 0; i < 60; i++) {
   secondMarks.push(`<span style="--index:${i}"></span>`);
 }
@@ -23,7 +23,6 @@ function updateAnalogClock() {
     const duration = moment.duration(timerEndTime.diff(now));
     const minutes = Math.ceil(Math.max(0, duration.asMinutes()));
     const seconds = Math.floor(duration.seconds());
-
 	
     // Uppdatera analog klocka baserat på förfluten tid i timern
     handSeconds.style.transform = `rotate(${- seconds * 6}deg)`; // 60 - seconds för att räkna bakåt
@@ -47,18 +46,18 @@ function stopAnalogClock() {
   }
 }
 
-function toggleAnalogTimer() {
-  // Invertera värdet på variabeln
-  analogTimerVisible = !analogTimerVisible;
+// function toggleAnalogTimer() {
+//   // Invertera värdet på variabeln
+//   analogTimerVisible = !analogTimerVisible;
 
-  // Sätt display-egenskapen baserat på variabelns värde
-  if (analogTimerSection) {
-      analogTimerSection.style.display = "flex";
-  }}
+//   // Sätt display-egenskapen baserat på variabelns värde
+//   if (analogTimerSection) {
+//       analogTimerSection.style.display = "flex";
+//   }}
 
 
 
 
 setInterval(updateAnalogClock, 1000);
 
-export { startAnalogClock, stopAnalogClock, updateAnalogClock, toggleAnalogTimer };
+export { startAnalogClock, stopAnalogClock, updateAnalogClock, /* toggleAnalogTimer  */};

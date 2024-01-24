@@ -8,41 +8,38 @@
     <title>Vite + TS</title>
   </head>
   <body>
-    <div class="wrapper">
-      <header>
-        <div class="dropdown-menu">
-          <button class="dropdown-button">(Menu)</button>
-          <div class="menu-hidden show">
-            <button class="analogButton">Analog</button>
-            <button class="digital">Digital</button>
-            <button class="visual">Visual</button>
-            <button class="text">Text</button>
-            <button class="circles">Circles</button>
-          </div>
-        </div>
-      </header>
 
+    <div class="wrapper">
+      <div class="dropdown-menu">
+        <div class="menu-hidden show">
+          <button class="setTimerBtn">Set Timer</button>
+          <button class="analogButton">Analog</button>
+          <button class="digital">Digital</button>
+          <button class="visual">Visual</button>
+        </div>
+      </div>
       <section class="set-timer">
+        <button class="dropdown-button">(Menu)</button>
         <button class="reduce-time">&lt;</button>
         <input type="number" id="timer-input" min="1" value="10" />minutes
         <button class="add-time">></button>
+        <section class="checkbox-menu">
+          <label for="checkbox-intervals">
+            <input type="checkbox" id="checkbox-intervals" /> Intervals
+          </label>
+          <label for="checkbox-break">
+            <input type="checkbox" id="checkbox-break" /> 5 min break / interval
+          </label>
+        </section>
+        <button id="start-button">Start Timer</button>
+        <button id="reset-paus-button">Reset paus</button>
       </section>
 
-      <section class="checkbox-menu">
-        <label for="checkbox-intervals">
-          <input type="checkbox" id="checkbox-intervals" /> Intervals
-        </label>
-        <label for="checkbox-break">
-          <input type="checkbox" id="checkbox-break" /> 5 min break / interval
-        </label>
+      <section id="digital-timer">
+        <div id="timer-display">00:00</div>
+        <br />
+        <div id="timer-display-break">00:00</div>
       </section>
-
-      <div id="timer-display">00:00</div>
-      <div id="timer-display-break">00:00</div>
-
-      <button id="start-button">Start Timer</button>
-      <button class="stop-button">Abort timer</button>
-      <button id="reset-paus-button">Reset paus</button>
 
       <section class="analog-timer" id="analogTimerSection">
         <div class="timerWrapper">
@@ -59,6 +56,8 @@
           <button class="stop-button">Abort timer</button>
         </section>
       </section>
+
+      <section id="visual-timer"></section>
 
       <section class="start-page"></section>
 

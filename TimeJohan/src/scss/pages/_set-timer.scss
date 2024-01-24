@@ -1,10 +1,17 @@
 .set-timer {
+	width: 23.4375rem;
+	height: 41.6875rem;
     background-color: #333333;
-    display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    flex-direction: column;
+    flex-direction: row;
+	margin: 1rem;
+
+
+	.reduce-time{
+		margin-top: 10rem;
+	}
+
 }
 
 #timer-input::-webkit-inner-spin-button,

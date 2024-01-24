@@ -7,9 +7,21 @@
 //   element.addEventListener('click', () => setCounter(counter + 1))
 //   setCounter(0)
 // }
+
+// export function setupCounter(element: HTMLButtonElement) {
+//   let counter = 0
+//   const setCounter = (count: number) => {
+//     counter = count
+//     element.innerHTML = `count is ${counter}`
+//   }
+//   element.addEventListener('click', () => setCounter(counter + 1))
+//   setCounter(0)
+// }
 import moment from "moment";
 import { startBreakTimer, stopBreakTimer, updateBreakTimer } from "./break";
-import { startAnalogClock, stopAnalogClock, updateAnalogClock, toggleAnalogTimer} from "./analog";
+import { startAnalogClock, stopAnalogClock, updateAnalogClock, } from "./analog";
+import { startVisualTimer, stopVisualTimer, updateVisualTimer } from "./visual";
+import { showDigitalTimer } from "./menu";
 
 const checkboxIntervals = document.getElementById('checkbox-intervals') as HTMLInputElement;
 const checkboxBreak = document.getElementById('checkbox-break') as HTMLInputElement;
@@ -52,9 +64,10 @@ const timerDisplay = document.getElementById('timer-display') as HTMLDivElement;
     console.log("hej")
     endTime = moment().add(minutes, 'minutes');
     startAnalogClock(endTime);
+    startVisualTimer(endTime);
     timerInterval = setInterval(() => {
       updateTimerDisplay();
-     
+      updateVisualTimer();
       const now = moment();
       const duration = moment.duration(endTime!.diff(now));
       const minutes = Math.max(0, Math.floor(duration.asMinutes())); // Kontrollera att minuterna inte är negativa
@@ -73,12 +86,15 @@ const timerDisplay = document.getElementById('timer-display') as HTMLDivElement;
           updateTimerDisplay();  // Uppdatera displayen när timern är klar
           stopTimer();
           stopAnalogClock();
+          stopVisualTimer();
         }
       }
     }, 1000);
     updateBreakTimer();
     updateTimerDisplay();
+    updateVisualTimer();
     stopBreakTimer();
+
   }
 
   function stopTimer() {
