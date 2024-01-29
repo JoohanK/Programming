@@ -1,3 +1,5 @@
+Anton Hansen, Johan Kristensson, Filip Isaksson och Hampus Falk
+
 ![poster](./poster.png)
 # Interval App - for all you timing needs
 

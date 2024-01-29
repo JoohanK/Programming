@@ -1,13 +1,12 @@
 import moment from "moment";
 
-console.log("Hej")
 const handSeconds: Element | any = document.querySelector(".hand.seconds");
 const handMinutes: Element | any = document.querySelector(".hand.minutes");
 const numberOfMinutes: Element | any = document.querySelector(".numberOfminutes");
 
-
 const secondMarks: string[] = [];
 
+// Loop som loopar fram indikationer för varje sträck som visar klockans sekunder/minuter.
 for (let i = 0; i < 60; i++) {
   secondMarks.push(`<span style="--index:${i}"></span>`);
 }
@@ -23,14 +22,10 @@ function updateAnalogClock() {
     const duration = moment.duration(timerEndTime.diff(now));
     const minutes = Math.ceil(Math.max(0, duration.asMinutes()));
     const seconds = Math.floor(duration.seconds());
-
 	
     // Uppdatera analog klocka baserat på förfluten tid i timern
     handSeconds.style.transform = `rotate(${- seconds * 6}deg)`; // 60 - seconds för att räkna bakåt
     handMinutes.style.transform = `rotate(${- minutes * 6}deg)`; // 60 - minutes för att räkna bakåt
-
-	
-	
   }
 }
 
@@ -52,8 +47,6 @@ function stopAnalogClock() {
 
 
 
-
-
 setInterval(updateAnalogClock, 1000);
 
-export { startAnalogClock, stopAnalogClock, updateAnalogClock, };
+export { startAnalogClock, stopAnalogClock, updateAnalogClock};
