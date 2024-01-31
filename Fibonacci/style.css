@@ -1,0 +1,66 @@
+/* 
+-Rem relaterar till teckenstorleken i BODY
+-Em relaterar till aktuell teckenstorlek
+*/
+
+.fibonacci {
+    display: flex;
+    min-height: 5em;
+    margin-bottom: 2rem;
+    width: 90vw;
+    margin-top: 2rem;
+   
+}
+
+.fibonacci.reverse {
+    flex-direction: row-reverse;
+}
+
+.fibonacci > * {
+color:white;
+background-color: rgb(100, 0, 0);
+padding: 0.5em;
+flex-grow: 1;
+flex-basis: 0;
+}
+
+.fibonacci > :nth-child(2){
+    background-color: #641400;
+}
+
+.fibonacci > :nth-child(3){
+    background-color: #647800;
+    flex-grow: 2;
+}
+
+.fibonacci > :nth-child(4){
+    background-color: #641;
+    flex-grow: 3;
+}
+
+.fibonacci > :nth-child(5){
+    background-color: #641400;
+    flex-grow: 4;
+}
+
+.fibonacci > :nth-child(6){
+    background-color: #9f5746;
+    flex-grow: 5;
+}
+
+.fibonacci > :nth-child(7){
+    background-color: #cd4a2a;
+    flex-grow: 6;
+}
+.fibonacci > :nth-child(8){
+    background-color: #f33f12;
+    flex-grow: 7;
+}
+.fibonacci > :nth-child(9){
+    background-color: #64a100;
+    flex-grow: 8;
+}
+.fibonacci > :nth-child(10){
+    background-color: #658401;
+    flex-grow: 9;
+}
