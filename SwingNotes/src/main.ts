@@ -11,46 +11,52 @@ interface Note {
 async function getNotes(): Promise<void> {
     const username: string = (document.getElementById("usernameInput") as HTMLInputElement).value;
     const response: Response = await fetch(`${baseURL}/api/notes/${username}`);
-    const data: Note[] = await response.json();
-    console.log("Hämtade anteckningar:", data);
+    const responseData: any = await response.json();
+  
+    if (!responseData || !Array.isArray(responseData.notes)) {
+      console.error("Invalid data format:", responseData);
+      return;
+    }
+  
+    const notes: Note[] = responseData.notes;
+  
+    // Sortera anteckningarna efter skapad datum i fallande ordning
+    const sortedNotes: Note[] = notes.slice().sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+  
+    console.log("Hämtade anteckningar:", sortedNotes);
 
-    displayRecentNotes(data);
+
+    displayRecentNotes(sortedNotes);
     // Implementera kod för att visa anteckningarna på sidan
 }
 
-function displayRecentNotes(responseData: any): void {
-    console.log("Data från API:", responseData);
 
-    if (!responseData || !Array.isArray(responseData.notes)) {
-        console.error("Invalid data format:", responseData);
-        return;
-    }
+function displayRecentNotes(notes: Note[]): void {
+    
 
-    const notes = responseData.notes;
+    const recentNotesContainer: HTMLElement = document.getElementById("recentNotes")!;
 
-    const recentNotesContainer = document.getElementById("recentNotes")!;
-
-    // Töm befintliga anteckningar
     recentNotesContainer.innerHTML = "";
 
+
     // Visa de senaste 4 anteckningarna
-    const notesToDisplay = notes.slice(0, 4);
+    const notesToDisplay: Note[] = notes.slice(0, 4);
     for (const note of notesToDisplay) {
         console.log("Displaying note:", note);
         
-        const noteCard = document.createElement("div");
+        const noteCard: HTMLDivElement = document.createElement("div");
         noteCard.classList.add("note-card");
 
-        const noteInfo = document.createElement("p");
-        noteInfo.innerText = `Användare: ${note.username}\nTitel: ${note.title}\nAnteckning: ${note.note}`;
+        const noteInfo: HTMLParagraphElement = document.createElement("p");
+        noteInfo.innerText = `Användare: ${note.username}\nTitel: ${note.title}\nAnteckning: ${note.note}\nDate: ${note.createdAt}`;
         noteCard.appendChild(noteInfo);
 
-        const updateButton = document.createElement("button");
+        const updateButton: HTMLButtonElement = document.createElement("button");
         updateButton.innerText = "Uppdatera";
         updateButton.onclick = () => showUpdateForm(note.id);
         noteCard.appendChild(updateButton);
 
-        const deleteButton = document.createElement("button");
+        const deleteButton: HTMLButtonElement = document.createElement("button");
         deleteButton.innerText = "Ta bort";
         deleteButton.onclick = () => deleteNoteById(note.id);
         noteCard.appendChild(deleteButton);
@@ -59,7 +65,11 @@ function displayRecentNotes(responseData: any): void {
     }
 }
 
+
+
 async function createNote(): Promise<void> {
+
+    await getNotes();
     const username: string = (document.getElementById("usernameInput") as HTMLInputElement).value;
     const title: string = (document.getElementById("title") as HTMLInputElement).value;
     const noteText: string = (document.getElementById("note") as HTMLInputElement).value;
@@ -80,6 +90,8 @@ async function createNote(): Promise<void> {
 
     const data: Note = await response.json();
     console.log("Skapade anteckning:", data);
+
+    
     // Implementera kod för att visa den nya anteckningen på sidan
 }
 
@@ -101,20 +113,9 @@ async function updateNote(): Promise<void> {
     });
 
     const data: Note = await response.json();
+    getNotes();
     console.log("Uppdaterade anteckning:", data);
-    // Implementera kod för att visa den uppdaterade anteckningen på sidan
-}
-
-async function deleteNote(): Promise<void> {
-    const noteId: string = (document.getElementById("deleteNoteId") as HTMLInputElement).value;
-
-    const response: Response = await fetch(`${baseURL}/api/notes/${noteId}`, {
-        method: "DELETE"
-    });
-
-    console.log("Anteckning borttagen");
-    
-    // Implementera kod för att uppdatera sidan efter borttagning
+    hidePopup();
 }
 
 
@@ -132,7 +133,10 @@ async function showUpdateForm(noteId: string): Promise<void> {
         updateNoteIdInput.value = noteId;
         updatedNoteInput.value = note.note;
     }
+    showPopup();
+
 }
+
 
 async function deleteNoteById(noteId: string): Promise<void> {
     // Skicka en förfrågan för att ta bort anteckningen med det givna noteId
@@ -153,3 +157,29 @@ async function createAndFetchNotes(): Promise<void> {
     await createNote();
     await getNotes();
 }
+
+function showPopup(): void {
+    const overlay = document.getElementById("overlay");
+    const popup = document.getElementById("popup");
+    const abortButton = document.getElementById("abortButton")!;
+  
+    if (overlay && popup) {
+      overlay.classList.remove("hidden");
+      popup.classList.remove("hidden");
+      abortButton.classList.remove("hidden");
+    }
+  }
+  
+  // Funktion för att dölja popup
+  function hidePopup(): void {
+    const overlay = document.getElementById("overlay");
+    const popup = document.getElementById("popup");
+    const abortButton = document.getElementById("abortButton")!;
+  
+    if (overlay && popup) {
+      overlay.classList.add("hidden");
+      popup.classList.add("hidden");
+      abortButton.classList.add("hidden");
+    }
+  }
+  

@@ -39,22 +39,15 @@
   </div>
 
   <!-- Lägg till klassen "hidden-section" på dessa delar -->
-  <div class="hidden-section">
-  
+  <div id="overlay" class="hidden"></div>
 
-
-
-    <label for="updateNoteId">Anteckning ID:</label>
+  <div id="popup" class="hidden-section hidden">
+   
     <input type="text" id="updateNoteId" placeholder="Ange anteckningens ID">
-    <label for="updatedNote">Uppdaterad Anteckning:</label>
+    <label for="updatedNote">Update note:</label>
     <textarea id="updatedNote" placeholder="Skriv din uppdaterade anteckning här"></textarea>
     <button onclick="updateNote()">Uppdatera Anteckning</button>
-
-    <hr>
-
-    <label for="deleteNoteId">Anteckning ID:</label>
-    <input type="text" id="deleteNoteId" placeholder="Ange anteckningens ID">
-    <button onclick="deleteNote()">Ta bort Anteckning</button>
+    <button id="abortButton" onclick="hidePopup()">Avbryt</button>
   </div>
 
   <script src="./src/main.ts"></script>
