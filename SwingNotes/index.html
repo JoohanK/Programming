@@ -14,6 +14,7 @@
 
 <body>
   <div class="container">
+    
     <div class="left-section">
       <h2>Senaste 4 anteckningar</h2>
       <div id="recentNotes" class="recent-notes">
@@ -37,15 +38,14 @@
       <button onclick="getNotes()">Historik</button>
     </div>
   </div>
-
-  <!-- Lägg till klassen "hidden-section" på dessa delar -->
+  
   <div id="overlay" class="hidden"></div>
 
   <div id="popup" class="hidden-section hidden">
    
     <input type="text" id="updateNoteId" placeholder="Ange anteckningens ID">
     <label for="updatedNote">Update note:</label>
-    <textarea id="updatedNote" placeholder="Skriv din uppdaterade anteckning här"></textarea>
+    <textarea id="updatedNote" placeholder="Write new note here"></textarea>
     <button onclick="updateNote()">Uppdatera Anteckning</button>
     <button id="abortButton" onclick="hidePopup()">Avbryt</button>
   </div>

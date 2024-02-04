@@ -1,5 +1,7 @@
 const baseURL: string = "https://o6wl0z7avc.execute-api.eu-north-1.amazonaws.com";
 
+
+
 interface Note {
     id: string;
     username: string;
@@ -52,14 +54,16 @@ function displayRecentNotes(notes: Note[]): void {
         noteCard.appendChild(noteInfo);
 
         const updateButton: HTMLButtonElement = document.createElement("button");
-        updateButton.innerText = "Uppdatera";
+        updateButton.innerText = "Update";
         updateButton.onclick = () => showUpdateForm(note.id);
         noteCard.appendChild(updateButton);
+        updateButton.classList.add("action-button-update");
 
         const deleteButton: HTMLButtonElement = document.createElement("button");
-        deleteButton.innerText = "Ta bort";
+        deleteButton.innerText = "Delete";
         deleteButton.onclick = () => deleteNoteById(note.id);
         noteCard.appendChild(deleteButton);
+        deleteButton.classList.add("action-button-delete");
 
         recentNotesContainer.appendChild(noteCard);
     }
@@ -68,11 +72,13 @@ function displayRecentNotes(notes: Note[]): void {
 
 
 async function createNote(): Promise<void> {
+    const usernameInput: HTMLInputElement = document.getElementById("usernameInput") as HTMLInputElement;
+    const titleInput: HTMLInputElement = document.getElementById("title") as HTMLInputElement;
+    const noteInput: HTMLInputElement = document.getElementById("note") as HTMLInputElement;
 
-    await getNotes();
-    const username: string = (document.getElementById("usernameInput") as HTMLInputElement).value;
-    const title: string = (document.getElementById("title") as HTMLInputElement).value;
-    const noteText: string = (document.getElementById("note") as HTMLInputElement).value;
+    const username: string = usernameInput.value;
+    const title: string = titleInput.value;
+    const noteText: string = noteInput.value;
 
     const note: Omit<Note, 'id' | 'createdAt'> = {
         username: username,
@@ -80,19 +86,28 @@ async function createNote(): Promise<void> {
         note: noteText
     };
 
-    const response: Response = await fetch(`${baseURL}/api/notes`, {
-        method: "POST",
-        body: JSON.stringify(note),
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    });
+    try {
+        // Skicka en POST-förfrågan för att skapa anteckningen
+        const response: Response = await fetch(`${baseURL}/api/notes`, {
+            method: "POST",
+            body: JSON.stringify(note),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
 
-    const data: Note = await response.json();
-    console.log("Skapade anteckning:", data);
+        const data: Note = await response.json();
+        console.log("Skapade anteckning:", data);
 
-    
-    // Implementera kod för att visa den nya anteckningen på sidan
+        // Nollställ inputfälten efter att anteckningen har skapats
+        titleInput.value = "";
+        noteInput.value = "";
+
+        // Hämta och visa de uppdaterade anteckningarna
+        await getNotes();
+    } catch (error) {
+        console.error("Error creating note:", error);
+    }
 }
 
 
@@ -121,22 +136,32 @@ async function updateNote(): Promise<void> {
 
 
 async function showUpdateForm(noteId: string): Promise<void> {
-    // Hämta den befintliga anteckningen för det givna noteId
-    const response: Response = await fetch(`${baseURL}/api/notes/${noteId}`);
-    const note: Note = await response.json();
-
-    // Fyll i formuläret med de befintliga värdena
-    const updateNoteIdInput = document.getElementById("updateNoteId") as HTMLInputElement;
-    const updatedNoteInput = document.getElementById("updatedNote") as HTMLInputElement;
-
-    if (updateNoteIdInput && updatedNoteInput) {
-        updateNoteIdInput.value = noteId;
-        updatedNoteInput.value = note.note;
-    }
     showPopup();
+    try {
+        // Hämta den befintliga anteckningen för det givna noteId
+        const response: Response = await fetch(`${baseURL}/api/notes/${noteId}`);
+        
+        if (!response.ok) {
+            console.error("Error fetching note:", response.statusText);
+            return;
+        }
 
+        const note: Note = await response.json();
+        console.log("Fetched note:", note);
+
+        // Fyll i formuläret med de befintliga värdena
+        const updateNoteIdInput = document.getElementById("updateNoteId") as HTMLInputElement;
+        const updatedNoteInput = document.getElementById("updatedNote") as HTMLInputElement;
+
+        if (updateNoteIdInput && updatedNoteInput) {
+            updateNoteIdInput.value = noteId;
+            updatedNoteInput.value = "Update note here";
+        }
+        
+    } catch (error) {
+        console.error("Error in showUpdateForm:", error);
+    }
 }
-
 
 async function deleteNoteById(noteId: string): Promise<void> {
     // Skicka en förfrågan för att ta bort anteckningen med det givna noteId

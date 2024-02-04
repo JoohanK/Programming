@@ -1,6 +1,6 @@
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
+    background-color: #1f1f1f;
     margin: 0;
     padding: 0;
 }
@@ -8,16 +8,12 @@ body {
 .container {
     max-width: 800px;
     margin: 50px auto;
-    background-color: #fff;
+    background-color: #908d8d;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(152, 42, 42, 0.1);
 }
 
-h1 {
-    text-align: center;
-    color: #333;
-}
 
 .section {
     margin-bottom: 20px;
@@ -33,7 +29,8 @@ textarea {
     width: 100%;
     padding: 8px;
     margin-bottom: 10px;
-    border: 1px solid #ddd;
+    background-color: #dedede;
+    border: 2px solid #252525;
     border-radius: 4px;
 }
 
@@ -46,13 +43,13 @@ button {
     padding: 10px;
     background-color: #4caf50;
     color: #fff;
-    border: none;
+    border: 1px solid black;
     border-radius: 4px;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #27742b;
 }
 
 .container {
@@ -66,8 +63,11 @@ button:hover {
 }
 
 .left-section {
-    border-right: 1px solid #ddd;
+    border-right: 2px solid #1d1d1d;
     padding-right: 20px;
+    margin-top: 1.2rem;
+
+   
 }
 
 .right-section {
@@ -75,13 +75,15 @@ button:hover {
 }
 
 .recent-notes {
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 .note-card {
-    border: 1px solid #ddd;
+    border: 2px solid #3c3c3c;
+    background-color: #dedede;
     padding: 10px;
     margin-bottom: 10px;
+    border-radius: 4px;
 }
 
 #note {
@@ -106,8 +108,9 @@ button:hover {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #fff; /* Vit bakgrund för popupen */
+    background-color: #473535; /* Vit bakgrund för popupen */
     padding: 20px;
+    padding-right: 35px;
     border: 1px solid #ccc;
     z-index: 1000; /* Sätt ett högre z-index för att popupen ska visas över andra element */
   }
@@ -115,3 +118,17 @@ button:hover {
   #updateNoteId {
     display: none;
   }
+  #updatedNote  {
+    resize: none;
+  }
+
+  .action-button-update {
+    margin-right: 5px; /* Justera detta värde för att ändra avståndet */
+}
+
+.action-button-delete {
+    background-color: rgb(209, 85, 85);
+}
+.action-button-delete:hover {
+    background-color: rgb(148, 49, 49);
+}
