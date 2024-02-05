@@ -100,7 +100,7 @@ button:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Svart overlay med 50% opacitet */
+    background-color: rgba(0, 0, 0, 0.7); /* Svart overlay med 50% opacitet */
   }
   
   #popup {
@@ -108,10 +108,10 @@ button:hover {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #473535; /* Vit bakgrund för popupen */
+    background-color: #b0b0b0; /* Vit bakgrund för popupen */
     padding: 20px;
     padding-right: 35px;
-    border: 1px solid #ccc;
+    border: 1px solid #403d3d;
     z-index: 1000; /* Sätt ett högre z-index för att popupen ska visas över andra element */
   }
   
