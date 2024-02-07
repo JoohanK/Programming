@@ -6,10 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Anteckningshantering</title>
   <link rel="stylesheet" href="./src/scss/styles.scss">
-  <style>
-    /* Anpassa stilen efter behov */
-  
-  </style>
 </head>
 
 <body>
@@ -18,7 +14,7 @@
     <div class="left-section">
       <h2>Senaste 4 anteckningar</h2>
       <div id="recentNotes" class="recent-notes">
-        <!-- Här kommer de senaste 4 anteckningarna att visas -->
+      
       </div>
     </div>
 
@@ -26,16 +22,16 @@
       <h2>Ny anteckning</h2>
       <label for="title">Titel:</label>
       <input type="text" id="title" placeholder="Ange titel">
-      <label for="note">Anteckning:</label>
-      <textarea id="note" placeholder="Skriv din anteckning här"></textarea>
+      <label for="newNote">Anteckning:</label>
+      <textarea id="newNote" placeholder="Skriv din anteckning här"></textarea>
       
   
 
       <label for="usernameInput">Användarnamn:</label>
       <input type="text" id="usernameInput" placeholder="Ange ditt användarnamn">
 
-      <button onclick="createAndFetchNotes()">Publicera</button>
-      <button onclick="getNotes()">Historik</button>
+      <button id="publishButton">Publicera</button>
+      <button id="historyButton">Historik</button>
     </div>
   </div>
   
@@ -44,13 +40,14 @@
   <div id="popup" class="hidden-section hidden">
    
     <input type="text" id="updateNoteId" placeholder="Ange anteckningens ID">
-    <label for="updatedNote">Update note:</label>
-    <textarea id="updatedNote" placeholder="Write new note here"></textarea>
-    <button onclick="updateNote()">Uppdatera Anteckning</button>
-    <button id="abortButton" onclick="hidePopup()">Avbryt</button>
+    <label for="updatedNote">Uppdatera anteckning:</label>
+    <textarea id="updatedNote" placeholder="Skriv ny anteckning här"></textarea>
+    <button id="updateButton">Uppdatera Anteckning</button>
+    <button id="abortButton">Avbryt</button>
   </div>
 
-  <script src="./src/main.ts"></script>
+  <script type="module" src="./src/main.ts"></script>
+
 </body>
 
 </html>

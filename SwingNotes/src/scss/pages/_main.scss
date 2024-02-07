@@ -1,0 +1,10 @@
+@import "../abstract/colors";
+
+.container {
+    max-width: 900px;
+    margin: 50px auto;
+    background-color: $containerGrey;
+    padding: 3rem;
+    border-radius: 5px;
+
+}
