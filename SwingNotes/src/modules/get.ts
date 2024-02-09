@@ -13,7 +13,6 @@ export const getNotes = async (): Promise<void> => {
         
         const notes: Note[] = responseData.notes;
         
-        // Sortera anteckningarna efter skapad datum i fallande ordning
         const sortedNotes: Note[] = notes.slice().sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
         
         console.log("Hämtade anteckningar:", sortedNotes);
@@ -31,7 +30,6 @@ export const displayRecentNotes = (notes: Note[]): void => {
 
     recentNotesContainer.innerHTML = "";
 
-    // Visa de senaste 4 anteckningarna
     const notesToDisplay: Note[] = notes.slice(0, 4);
     for (const note of notesToDisplay) {
         console.log("Displaying note:", note);
@@ -40,8 +38,10 @@ export const displayRecentNotes = (notes: Note[]): void => {
         noteCard.classList.add("note-card");
 
         const noteInfo: HTMLParagraphElement = document.createElement("p");
-        noteInfo.innerText = `Användare: ${note.username}\nTitel: ${note.title}\nAnteckning: ${note.note}\nDate: ${note.createdAt}`;
+        
+        noteInfo.innerHTML = `Användare: ${note.username}<br>Titel: ${note.title}<br>Anteckning:<br><br> <span class="small-note-text">${note.note}</span><br><br>Date: ${note.createdAt}`;
         noteCard.appendChild(noteInfo);
+
 
         const updateButton: HTMLButtonElement = document.createElement("button");
         updateButton.innerText = "Uppdatera";
