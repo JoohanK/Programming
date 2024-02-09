@@ -1,4 +1,5 @@
 @import "../abstract/colors";
+@import "../abstract/mixin";
 
 .container {
     max-width: 900px;
@@ -6,5 +7,10 @@
     background-color: $containerGrey;
     padding: 3rem;
     border-radius: 5px;
-
+   
+    display: flex;
+    justify-content: space-between;
+    animation: slideinleft 1s ease forwards;
 }
+
+@include slideAnimation;

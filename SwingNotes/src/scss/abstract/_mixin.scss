@@ -1,26 +1,3 @@
-@mixin abortButton($background-color){
-	height: 2.56rem;
-	width: 8.25rem;
-	background-color: $background-color;
-	border-radius: 3px;
-	border: 1px solid #ffffffaf;
-	font-weight: 500;
-	font-family: $primaryFont;
-	font-size: 1rem;
-	text-transform: uppercase;
-	letter-spacing: 0.08rem;
-	color: #ffffffaf;
-
-}
-
-@mixin menuIcon(){
-	background-color: transparent;
-	border: none;
-	top: 1rem;
-	left: 1rem;
-	position: absolute;
-}
-
 @mixin slideAnimation(){
 
 	@keyframes slideinleft {
@@ -35,8 +12,14 @@
 		  transform: translateX(0%);
 		}
 	  }
-	  
-	
-
 }
 
+@mixin applyFontFamily($fontFamily) {
+    label,
+    h2,
+    p,
+    button,
+    ::placeholder {
+        font-family: $fontFamily;
+    }
+}

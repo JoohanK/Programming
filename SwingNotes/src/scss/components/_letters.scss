@@ -1,20 +1,3 @@
 @import "../abstract/fonts";
 
-label {
-    font-family: $primaryFont;
-}
-
-h2 {
-    font-family: $primaryFont;
-}
-
-p {
-    font-family: $primaryFont;
-}
-button {
-    font-family: $primaryFont;
-}
-
-::placeholder {
-    font-family: $primaryFont;
-}
+@include applyFontFamily($primaryFont)

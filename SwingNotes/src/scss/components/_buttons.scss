@@ -7,18 +7,18 @@ button {
     border: 1px solid black;
     border-radius: 4px;
     cursor: pointer;
+
+    &:hover {
+        background-color: $hoverOnGreen;
+    }
 }
 
 #abortButton {
     background-color: $primaryDelete;
-}
 
-#abortButton:hover {
-    background-color: $hoverOnRed;
-}
-
-button:hover {
-    background-color: $hoverOnGreen;
+    &:hover {
+        background-color: $hoverOnRed;
+    }
 }
 
 .action-button-update {
@@ -27,7 +27,8 @@ button:hover {
 
 .action-button-delete {
     background-color: $primaryDelete;
-}
-.action-button-delete:hover {
-    background-color: $hoverOnRed
+
+    &:hover {
+        background-color: $hoverOnRed;
+    }
 }
