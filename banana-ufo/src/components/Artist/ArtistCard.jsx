@@ -1,3 +1,5 @@
+
+
 const Artist = ({name, albums, tophit, photo}) => {
     return (<>
     <div className="artist-card">

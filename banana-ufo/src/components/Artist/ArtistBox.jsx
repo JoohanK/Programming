@@ -1,5 +1,5 @@
-import Artist from "./Artist";
-import kebab from "../../data.json";
+import Artist from "./ArtistCard";
+import kebab from "../../../data.json";
 
 const ArtistBox = () => {
     const data = kebab.data;
