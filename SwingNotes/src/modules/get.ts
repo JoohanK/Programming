@@ -15,7 +15,6 @@ export const getNotes = async (): Promise<void> => {
         
         const sortedNotes: Note[] = notes.slice().sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
         
-        console.log("Hämtade anteckningar:", sortedNotes);
 
         displayRecentNotes(sortedNotes);
       

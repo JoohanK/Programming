@@ -23,6 +23,3 @@ Användning:
 1. Starta applikationen genom att köra npm run dev
 2. Gå till http://localhost:5173/ i din webbläsare för att använda applikationen.
 
-Bidrag
-Bidrag är välkomna! 
-Om du vill bidra till projektet, vänligen skapa en gren (branch), gör dina ändringar och skicka in en pull-förfrågan.
