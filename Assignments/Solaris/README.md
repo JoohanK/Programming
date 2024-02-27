@@ -1,3 +1,0 @@
-# uppgifter
-Inlämningsuppgifter
-Johan Kristensson
