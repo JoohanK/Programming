@@ -1,0 +1,90 @@
+
+body {
+background-color: rgb(182, 194, 195);
+
+}
+
+/*
+Detta är en kommentar i csn
+*/
+
+
+img {
+    width: 20%;
+    height: auto;
+    border: solid 4px;
+    
+}
+
+
+
+.ommig {
+    border: solid 4px;
+}
+
+
+.frame {
+    border: 0cap;
+    margin-top: 2rem;
+    border: solid 5px rgb(163, 14, 31);
+    width:50%;
+    padding: 2rem 3rem 2rem 3rem;
+}
+
+.Rubrik {
+    background-color: rgb(111, 255, 0);
+    font-family: monospace;
+    border: solid 4px;
+    padding-left: 50%;
+
+}
+
+.Rubrik2 {
+    padding: 1rem;
+    margin-top: 5rem;
+    background-color: aquamarine;
+    border: solid 4px;
+    
+}
+
+.HobbiesRubrik {
+    border: solid 4px;
+    margin margin-top: 5rem;
+
+}
+
+
+
+
+
+p  {
+    color: blue;
+}
+
+
+
+h2{
+color: rgb(53, 22, 50);
+}
+
+hr {
+height: auto;
+}
+
+ul {
+    color: aliceblue;
+}
+
+h3 
+{
+color: blue;
+}
+
+ol {
+    color: blueviolet;
+}
+
+table {
+    color: aqua;
+    font-size: x-large;
+}
