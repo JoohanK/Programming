@@ -6,7 +6,6 @@ Du kan också anpassa detta projekt genom att lägga till fler funktioner, som a
 
 baskod: https://codepen.io/mgedda/pen/PoVYEbE */
 
-
 let generateButton = document.getElementById("generateButton");
 colorBox = document.querySelector(".colorBox");
 let colorHistoryList = document.querySelector(".colorHistorybox ul");
@@ -15,39 +14,40 @@ let RestartButton = document.getElementById("RestartButton");
 const colorHistory = [];
 const maxHistoryLength = 10;
 
-const colors = ["Yellow","Blue","Red","Green","Purple","Orange", "Brown", "turquoise"];
+const colors = [
+  "Yellow",
+  "Blue",
+  "Red",
+  "Green",
+  "Purple",
+  "Orange",
+  "Brown",
+  "turquoise",
+];
 
 function updateColorHistoryList() {
-    colorHistoryList.innerHTML = "";
-    colorHistory.forEach(color => {
-        let listItem = document.createElement("li");
-        listItem.style.backgroundColor = color;
-        colorHistoryList.appendChild(listItem);
-    })
+  colorHistoryList.innerHTML = "";
+  colorHistory.forEach((color) => {
+    let listItem = document.createElement("li");
+    listItem.style.backgroundColor = color;
+    colorHistoryList.appendChild(listItem);
+  });
 }
 
 generateButton.addEventListener("click", () => {
-    let randomColor = colors[Math.floor(Math.random() * colors.length)];
-    colorBox.style.backgroundColor = randomColor;
-    colorHistory.unshift(randomColor);
-    
-    if (colorHistory.length > maxHistoryLength) {
-        colorHistory.pop();
-    }
+  let randomColor = colors[Math.floor(Math.random() * colors.length)];
+  colorBox.style.backgroundColor = randomColor;
+  colorHistory.unshift(randomColor);
 
-    updateColorHistoryList()
+  if (colorHistory.length > maxHistoryLength) {
+    colorHistory.pop();
+  }
 
+  updateColorHistoryList();
 });
 
 RestartButton.addEventListener("click", () => {
-    colorHistoryList.innerHTML = "";
-    colorHistory.length = 0;
-    colorBox.style.backgroundColor = "White";
-   
-    
-})
-
-
-
-
-
+  colorHistoryList.innerHTML = "";
+  colorHistory.length = 0;
+  colorBox.style.backgroundColor = "White";
+});
